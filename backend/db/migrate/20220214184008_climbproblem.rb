@@ -5,7 +5,7 @@ class Climbproblem < ActiveRecord::Migration[6.1]
         i.boolean :in_progress
         i.boolean :completed
         i.string :climber_feedback
-        i.references :climber
+        i.references :user
         i.references :problem
         i.float :route_rating
       
