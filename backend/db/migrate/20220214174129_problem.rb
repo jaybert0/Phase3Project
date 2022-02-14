@@ -7,7 +7,7 @@ class Problem < ActiveRecord::Migration[6.1]
       i.integer :location
       i.date :end_date
       i.string :problem_description
-      i.references :route_setter
+      i.references :maker
       i.timestamps
     end
   end
