@@ -15,8 +15,8 @@ User.create(
         completed:Faker::Boolean.boolean,
         climber_feedback:Faker::TvShows::Simpsons.quote,
         route_rating:rand(0..5.0),
-        user_id:1
-        problem_id:Problem.all.sample.id
+        user_id:1,
+        problem_id:rand(1..15)
     )    
   }
 

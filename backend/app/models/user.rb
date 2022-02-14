@@ -1,4 +1,4 @@
 class User < ActiveRecord::Base
-    has_many :betas
-    has_many :problems, through: :betas
-end
+    has_many :climbproblems
+    has_many :problems, through: :climbproblems
+end 

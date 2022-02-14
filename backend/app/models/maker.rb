@@ -1,4 +1,4 @@
 class Maker < ActiveRecord::Base
     has_many :problems
-    has_many :betas, through: :problems
-end
+    has_many :climbproblems, through: :problems
+end 

@@ -1,4 +1,4 @@
 class Problem < ActiveRecord::Base
-    belongs_to :route_setter
-    has_many :betas
-end
+    belongs_to :maker
+    has_many :climbproblems
+end 

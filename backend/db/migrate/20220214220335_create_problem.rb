@@ -1,4 +1,4 @@
-class Problem < ActiveRecord::Migration[6.1]
+class CreateProblem < ActiveRecord::Migration[6.1]
   def change
     create_table :problems do |i|
       i.integer :difficulty
