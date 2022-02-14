@@ -10,9 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_14_174129) do
+ActiveRecord::Schema.define(version: 2022_02_14_184008) do
 
-  create_table "betas", force: :cascade do |t|
+  create_table "climbers", force: :cascade do |t|
+    t.string "username"
+  end
+
+  create_table "climbproblems", force: :cascade do |t|
     t.boolean "favorite"
     t.boolean "in_progress"
     t.boolean "completed"
@@ -20,11 +24,11 @@ ActiveRecord::Schema.define(version: 2022_02_14_174129) do
     t.integer "climber_id"
     t.integer "problem_id"
     t.float "route_rating"
-    t.index ["climber_id"], name: "index_betas_on_climber_id"
-    t.index ["problem_id"], name: "index_betas_on_problem_id"
+    t.index ["climber_id"], name: "index_climbproblems_on_climber_id"
+    t.index ["problem_id"], name: "index_climbproblems_on_problem_id"
   end
 
-  create_table "climbers", force: :cascade do |t|
+  create_table "makers", force: :cascade do |t|
     t.string "username"
   end
 
@@ -39,10 +43,6 @@ ActiveRecord::Schema.define(version: 2022_02_14_174129) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["route_setter_id"], name: "index_problems_on_route_setter_id"
-  end
-
-  create_table "route_setters", force: :cascade do |t|
-    t.string "username"
   end
 
 end
