@@ -14,7 +14,7 @@ class ClimbproblemsController < ApplicationController
         )
     end
 
-    post '/climbproblem' do
+    post '/climbproblems' do
         
         climb_problem = Climbproblem.create(
             favorite: params[:favorite],
