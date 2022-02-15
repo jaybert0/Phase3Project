@@ -1,5 +1,6 @@
 class ProblemsController < ApplicationController
     post '/problems' do
+        
         problem = Problem.create(
             difficulty: params[:difficulty],
             grip_color: params[:grip_color],
