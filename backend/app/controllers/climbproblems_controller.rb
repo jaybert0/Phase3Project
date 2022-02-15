@@ -67,6 +67,7 @@ class ClimbproblemsController < ApplicationController
           route_rating: params[:route_rating]
         )
         problem.to_json
+        
     end
 
     # patch '/climbproblem/:id/:is_completed' do  
