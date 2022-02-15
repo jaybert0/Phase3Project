@@ -1,6 +1,6 @@
 require 'pry'
 class ClimbproblemController < ApplicationController
-
+    
 
     # I don't fully understand how to call functions using the controller,so I have a bunch of methods in here that I need to trigger or run from post and patch prompts
     # post '/climbproblem/:id/:climber_feedback' do
@@ -25,7 +25,7 @@ class ClimbproblemController < ApplicationController
     # end
     # def set_route_rating
     #     binding.pry
-
+        
     # end
 
     # patch '/climbproblem/:id/:favorite' do
@@ -45,3 +45,4 @@ class ClimbproblemController < ApplicationController
     #     binding.pry
     #     self.is_completed = !self.is_completed
     # end
+end
