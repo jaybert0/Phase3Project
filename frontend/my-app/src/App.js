@@ -2,6 +2,9 @@ import logo from './logo.svg';
 import './App.css';
 import { Switch, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
+import ClimberHome from './components/ClimberHome';
+import MakerHome from './components/MakerHome';
+import LoginPage from './components/LoginPage';
 
 function App() {
   const MAKER = "http://localhost:9292"
@@ -51,14 +54,14 @@ function App() {
     <div className="App">
       <div className="App-container">
         <Switch>
-          <Route path="climber">
-            <h1> climber home </h1>
+          <Route exact path="/climberlogin">
+            <ClimberHome/>
           </Route>
-          <Route path="maker">
-            <h1> maker home </h1>
+          <Route exact path="/boltmonkey">
+            <MakerHome/>
           </Route>
           <Route exact path="">
-            <h1> login page </h1>
+            <LoginPage/>
           </Route>
         </Switch>
       </div>
