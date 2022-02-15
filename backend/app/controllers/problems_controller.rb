@@ -38,10 +38,16 @@ class ProblemsController < ApplicationController
         problem = Problem.where("end_date = ?", params[:end_date])
         problem.to_json
     end
-    get '/difficultyeasy' do
+    get '/difficulty/easy' do
         Problem.all.order(difficulty: :asc).to_json
     end
-    get '/difficultyhard' do
+    get '/difficulty/hard' do
         Problem.all.order(difficulty: :desc).to_json
     end
+    get '/difficulty/:v' do
+        problem = Problem.where("difficulty <= ?", params[:v])
+        problem.to_json(
+            only: [:difficulty, :grip_color, :technique, :location, :end_date, :problem_description])  
+    end
+
 end
