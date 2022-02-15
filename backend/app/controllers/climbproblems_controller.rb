@@ -1,5 +1,5 @@
 require 'pry'
-class ClimbproblemController < ApplicationController
+class ClimbproblemsController < ApplicationController
 
 
     # I don't fully understand how to call functions using the controller,so I have a bunch of methods in here that I need to trigger or run from post and patch prompts
@@ -44,4 +44,4 @@ class ClimbproblemController < ApplicationController
     # def is_completed
     #     binding.pry
     #     self.is_completed = !self.is_completed
-    # end
+    end
