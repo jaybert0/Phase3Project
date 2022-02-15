@@ -7,10 +7,10 @@ import MakerHome from './components/MakerHome';
 import LoginPage from './components/LoginPage';
 
 function App() {
-  const MAKER = "http://localhost:9292"
-  const CLIMBPROBLEM ="http://localhost:9292"
-  const PROBLEM ="http://localhost:9292"
-  const USER="http://localhost:9292"
+  const MAKER = "http://localhost:9292/makers"
+  const CLIMBPROBLEM ="http://localhost:9292/climbproblems"
+  const PROBLEM ="http://localhost:9292/problems"
+  const USER="http://localhost:9292/users"
 
   const [climbproblem, setClimbproblem] = useState([])
   const [maker, setMaker] = useState([])
