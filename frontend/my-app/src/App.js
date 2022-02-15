@@ -22,25 +22,29 @@ function App() {
   function getClimbproblems(){
     fetch(CLIMBPROBLEM)
     .then((r) => r.json())
-    .then((data) => setClimbproblem(data));
+    .then((data) => console.log(data))
+    // .then((data) => setClimbproblem(data))
   }
 
   function getMaker(){
     fetch(MAKER)
     .then((r) => r.json())
-    .then((data) => setMaker(data));
+    .then((data) => console.log(data))
+    // .then((data) => setMaker(data))
   }
 
   function getProblems(){
     fetch(PROBLEM)
     .then((r) => r.json())
-    .then((data) => setProblem(data));
+    .then((data) => console.log(data))
+    // .then((data) => setProblem(data))
   }
 
   function getUser(){
     fetch(USER)
     .then((r) => r.json())
-    .then((data) => setUser(data));
+    .then((data) => console.log(data))
+    // .then((data) => setUser(data))
   }
 
   return (
