@@ -27,35 +27,20 @@ class ClimbproblemsController < ApplicationController
         )
         climb_problem.to_json
     end
-    # I am a little unsure how we would differentiate between the two of these if it were just tied to the ID and patch requests
-    # def give_climber_feedback(feedback)
-    #     binding.pry
-        # self.climber_feedback = feedback
-    # end
 
-    # patch '/climbproblem/:id/:route_rating' do
-    # climb_problem = Climbproblem.find(params[:id])
-    # climb_problem.update(
-    #   route_rating: params[:route_rating]
-    # )
-    # climb_problem.to_json
-    # end
-    # def set_route_rating
-    #     binding.pry
+    get '/favs' do
+        problems = Climbproblem.where('favorite = true').order(:problem_id)
+        problems.to_json(only: [:favorite, :in_progress, :completed, :climber_feedback, :problem_id, :route_rating])
+    end
 
-    # end
-
-    # patch '/climbproblem/:id/:favorite' do
-    # def is_favorite
-    #     binding.pry
-    #     self.favorite = !self.favorite
-    # end
-
-    # patch '/climbproblem/:id/:in_progress' do
-    # def is_in_progress
-    #     binding.pry
-    #     self.in_progress = !self.in_progress
-    # end
+    get '/in_progress' do
+        problems = Climbproblem.where('in_progress = true').order(:problem_id)
+        problems.to_json(only: [:favorite, :in_progress, :climber_feedback, :problem_id, :route_rating])
+    end
+    get '/completed' do
+        problems = Climbproblem.where('completed = true').order(:problem_id)
+        problems.to_json(only: [:favorite, :completed, :climber_feedback, :problem_id, :route_rating])
+    end
 
     patch '/climbproblems/:id' do
         problem = Climbproblem.find(params[:id])
@@ -70,8 +55,5 @@ class ClimbproblemsController < ApplicationController
         
     end
 
-    # patch '/climbproblem/:id/:is_completed' do  
-    # def is_completed
-    #     binding.pry
-    #     self.is_completed = !self.is_completed
+  
     end
