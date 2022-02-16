@@ -19,17 +19,7 @@ User.create(
         problem_id:rand(1..16)
     )     
 
-#   15.times { 
-#       Problem.create(
-#           difficulty:rand(0..16),
-#           grip_color:Faker::Color.color_name,
-#           technique:Faker::Kpop.i_groups,
-#           location:rand(0..10),
-#           end_date:2022-03-15,
-#           problem_description:Faker::TvShows::Seinfeld.quote,
-#           maker_id:1
-#       )
-#    }
+
 
    Problem.create(
     difficulty:0,
