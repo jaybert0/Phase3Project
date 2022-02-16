@@ -6,6 +6,7 @@ import ClimberHome from './components/ClimberHome';
 import MakerHome from './components/MakerHome';
 import LoginPage from './components/LoginPage';
 import NavBar from './components/NavBar'
+import SplashCard from './components/SplashCard'
 function App() {
   const MAKER = "http://localhost:9292/makers"
   const CLIMBPROBLEM ="http://localhost:9292/climbproblems"
@@ -54,6 +55,7 @@ function App() {
     <div className="App">
       <div className="App-container">
         <NavBar />
+        <SplashCard />
         <Switch>
           <Route exact path="/climberlogin">
             <ClimberHome problem={problem} climbproblem={climbproblem}/>
