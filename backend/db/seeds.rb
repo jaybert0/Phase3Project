@@ -8,38 +8,28 @@ User.create(
     username: "SpiderMan"
 )
 
-15.times { 
+20.times { 
     Climbproblem.create(
         favorite:Faker::Boolean.boolean,
         in_progress:Faker::Boolean.boolean,
         completed:Faker::Boolean.boolean,
         climber_feedback:Faker::TvShows::Simpsons.quote,
-        route_rating:rand(0..5.0),
+        route_rating:rand(0..5),
         user_id:1,
-        problem_id:rand(1..15)
-    )    
-  }
-#   Climbproblem.create(
-#     favorite:Faker::Boolean.boolean,
-#     in_progress:Faker::Boolean.boolean,
-#     completed:Faker::Boolean.boolean,
-#     climber_feedback: "Th"
-#     route_rating:rand(0..5.0),
-#     user_id:1,
-#     problem_id:rand(1..15)
-# )
+        problem_id:rand(1..16)
+    )     
 
-  15.times { 
-      Problem.create(
-          difficulty:rand(0..16),
-          grip_color:Faker::Color.color_name,
-          technique:Faker::Kpop.i_groups,
-          location:rand(0..10),
-          end_date:2022-03-15,
-          problem_description:Faker::TvShows::Seinfeld.quote,
-          maker_id:1
-      )
-   }
+#   15.times { 
+#       Problem.create(
+#           difficulty:rand(0..16),
+#           grip_color:Faker::Color.color_name,
+#           technique:Faker::Kpop.i_groups,
+#           location:rand(0..10),
+#           end_date:2022-03-15,
+#           problem_description:Faker::TvShows::Seinfeld.quote,
+#           maker_id:1
+#       )
+#    }
 
    Problem.create(
     difficulty:0,
@@ -150,7 +140,7 @@ User.create(
         maker_id:1
         )
     Problem.create(
-        difficulty:2,
+        difficulty:3,
         grip_color:Faker::Color.color_name,
         technique:"Slopers",
         location:rand(0..10),,
