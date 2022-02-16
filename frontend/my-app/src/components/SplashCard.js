@@ -2,6 +2,7 @@ import React from "react";
 import logo from "./boulderbetasplash.png"
 import Container from "@material-ui/core/Container";
 
+
 function SplashCard () {
     return (
         <Container>

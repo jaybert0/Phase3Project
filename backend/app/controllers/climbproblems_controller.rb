@@ -28,16 +28,16 @@ class ClimbproblemsController < ApplicationController
         climb_problem.to_json
     end
 
-    get '/favs' do
+    get '/climbproblems/favs' do
         problems = Climbproblem.where('favorite = true').order(:problem_id)
         problems.to_json(only: [:favorite, :in_progress, :completed, :climber_feedback, :problem_id, :route_rating])
     end
 
-    get '/in_progress' do
+    get '/climbproblems/in_progress' do
         problems = Climbproblem.where('in_progress = true').order(:problem_id)
         problems.to_json(only: [:favorite, :in_progress, :climber_feedback, :problem_id, :route_rating])
     end
-    get '/completed' do
+    get '/climbproblems/completed' do
         problems = Climbproblem.where('completed = true').order(:problem_id)
         problems.to_json(only: [:favorite, :completed, :climber_feedback, :problem_id, :route_rating])
     end

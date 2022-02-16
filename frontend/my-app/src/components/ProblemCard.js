@@ -5,15 +5,14 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Grid from "@material-ui/core/Grid";
+import '../styles/ProblemCard.css'
   
   function ProblemCard({key, difficulty, location, technique, grip_color, end_date, problem_description}) {
     return (
-      <Box sx={{ 
+      <Box class="box" sx={{ 
           minWidth: 275,
           backgroundColor: '#2A9CBF',
-        '&:hover': {
-          backgroundColor: '#2A9CBF',
-          opacity: [0.9, 0.8, 0.7],  }
         }}>
         <Card variant="outlined">
         <React.Fragment>
@@ -31,11 +30,11 @@ import Typography from '@mui/material/Typography';
         End Date: {end_date}
         </Typography>
       </CardContent>
-      <CardActions>
+      <Grid container justifyContent="center">
         <Button size="small">Favorite</Button>
         <Button size="small">In Progress</Button>
         <Button size="small">Completed</Button>
-      </CardActions>
+      </Grid>
     </React.Fragment>
         </Card>
       </Box>

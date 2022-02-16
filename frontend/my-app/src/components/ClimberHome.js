@@ -1,14 +1,15 @@
 import ProblemCard from './ProblemCard'
 import WallMap from './WallMap'
+
 function ClimberHome({problem, climbproblem}){
     // console.log(problem[0].difficulty)
     // console.log(climbproblem[0])
     return(
         
         <div>
-            <WallMap id="wallmap"/>
+            <WallMap id="wallmap" />
             {problem.map(problem => (
-                <ProblemCard id="problemcard"
+                <ProblemCard alignItems="center" justifyContent="center" id="problemcard"
                 key={problem.id} 
                 difficulty={problem.difficulty}
                 location={problem.location}

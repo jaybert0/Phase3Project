@@ -1,7 +1,7 @@
 #map {
     position:sticky;
     top: 0;
-    z-index: auto;
+    z-index: 1;
 }
 #mapbox {
     background-color: #1C61AC
