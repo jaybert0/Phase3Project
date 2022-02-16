@@ -6,9 +6,9 @@ function ClimberHome({problem, climbproblem}){
     return(
         
         <div>
-            <WallMap />
+            <WallMap id="wallmap"/>
             {problem.map(problem => (
-                <ProblemCard 
+                <ProblemCard id="problemcard"
                 key={problem.id} 
                 difficulty={problem.difficulty}
                 location={problem.location}
