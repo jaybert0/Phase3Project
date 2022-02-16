@@ -29,22 +29,22 @@ class ProblemsController < ApplicationController
         problem.destroy
         problem.to_json
     end      
-    get '/technique/:technique' do
+    get '/problems/:technique' do
         problem = Problem.where("technique = ?", params[:technique])
         problem.to_json
     end
     
-    get '/end_date/:end_date' do
+    get '/problems/:end_date' do
         problem = Problem.where("end_date = ?", params[:end_date])
         problem.to_json
     end
-    get '/difficulty/easy' do
-        Problem.all.order(difficulty: :asc).to_json
+    get '/problems/difficulty/easy' do
+        Problem.all.order(problems: :asc).to_json
     end
-    get '/difficulty/hard' do
+    get '/problems/difficulty/hard' do
         Problem.all.order(difficulty: :desc).to_json
     end
-    get '/difficulty/:v' do
+    get '/problems/difficulty/:v' do
         problem = Problem.where("difficulty <= ?", params[:v])
         problem.to_json(
             only: [:difficulty, :grip_color, :technique, :location, :end_date, :problem_description])  
