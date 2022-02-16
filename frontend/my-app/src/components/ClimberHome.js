@@ -1,9 +1,11 @@
-function ClimberHome(){
+import ProblemCard from './ProblemCard'
+function ClimberHome({problem, climbproblem}){
+    // console.log(problem[0].difficulty)
+    // console.log(climbproblem[0])
     return(
+        
         <div>
-
-            <h1>"sent to ClimberHome"</h1>
-            
+            <ProblemCard problem={problem}/>
         </div>
         
     );
