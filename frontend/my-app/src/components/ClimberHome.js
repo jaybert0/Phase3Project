@@ -5,7 +5,17 @@ function ClimberHome({problem, climbproblem}){
     return(
         
         <div>
-            <ProblemCard problem={problem}/>
+            {problem.map(problem => (
+                <ProblemCard 
+                key={problem.id} 
+                difficulty={problem.difficulty}
+                location={problem.location}
+                technique={problem.technique}
+                grip_color={problem.grip_color}
+                end_date={problem.end_date}
+                problem_description={problem.problem_description}
+                />
+            ))}
         </div>
         
     );
