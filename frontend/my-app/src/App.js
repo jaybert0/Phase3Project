@@ -61,6 +61,9 @@ function App() {
           <Route exact path="/boltmonkey">
             <MakerHome/>
           </Route>
+          <Route exact path="/about">
+            <MakerHome/>
+          </Route>
           <Route exact path="">
             <LoginPage/>
           </Route>

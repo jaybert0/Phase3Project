@@ -58,9 +58,9 @@ function NavBar() {
         aria-label="Vertical tabs example"
         sx={{ borderRight: 1, borderColor: 'divider' }}
       >
-        <Tab label="Climber" {...a11yProps(0)} component={Link} to="/climberlogin" />
-        <Tab label="Route Setter" {...a11yProps(1)} component={Link} to="/boltmonkey"/>
-        <Tab label="Login" {...a11yProps(2)} component={Link} to="/"/>
+        <Tab label="Login" {...a11yProps(0)} component={Link} to="/"/>
+        <Tab label="Climber" {...a11yProps(1)} component={Link} to="/climberlogin" />
+        <Tab label="Route Setter" {...a11yProps(2)} component={Link} to="/boltmonkey"/>
         <Tab label="About" {...a11yProps(3)} component={Link} to="/about"/>
       </Tabs>
      
