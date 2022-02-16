@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import ClimberHome from './components/ClimberHome';
 import MakerHome from './components/MakerHome';
 import LoginPage from './components/LoginPage';
-
+import NavBar from './components/NavBar'
 function App() {
   const MAKER = "http://localhost:9292/makers"
   const CLIMBPROBLEM ="http://localhost:9292/climbproblems"
@@ -53,6 +53,7 @@ function App() {
   return (
     <div className="App">
       <div className="App-container">
+        <NavBar />
         <Switch>
           <Route exact path="/climberlogin">
             <ClimberHome/>
