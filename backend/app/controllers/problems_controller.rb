@@ -39,7 +39,7 @@ class ProblemsController < ApplicationController
     #     problem.to_json
     # end
     get '/problems-difficulty/easy' do
-        Problem.all.order(problems: :asc).to_json
+        Problem.all.order(difficulty: :asc).to_json
     end
     get '/problems-difficulty/hard' do
         Problem.all.order(difficulty: :desc).to_json
