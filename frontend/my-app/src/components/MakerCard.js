@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -16,13 +17,14 @@ import ProblemForm from './ProblemForm'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
   
-function MakerCard({difficulty, location, technique, grip_color, end_date, problem_description, id, problem}) {
-  
+function MakerCard({difficulty, location, technique, grip_color, end_date, problem_description, id, problem, formProblem, setFormProblem}) {
+
     return (
       <Card sx={{ maxWidth: 345 }}>
         <CardContent>
         <Typography variant="body1" color="text.primary">
-          Location: {location}{id}
+            Route: {id} <br />           
+            Location: {location}
             </Typography> 
           <Typography variant="body2" color="text.secondary">
             Difficulty: V{difficulty}<br />
@@ -42,7 +44,22 @@ function MakerCard({difficulty, location, technique, grip_color, end_date, probl
             <DeleteIcon />
           </IconButton>
           <IconButton aria-label="edit">
-          <EditIcon />
+          <EditIcon onClick= {() => {
+            if (problem.id === id) {
+                setFormProblem({
+                    id: id
+                    difficulty: difficulty,
+                    grip_color: grip_color,
+                    technique: technique,
+                    location: location,
+                    end_date: end_date,
+                    problem_description: problem_description,
+                    maker_id: 1,
+            }
+                )
+            }
+            console.log(difficulty)
+          } } />
           </IconButton>
       </CardActions>
     </Card>

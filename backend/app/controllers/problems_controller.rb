@@ -16,7 +16,7 @@ class ProblemsController < ApplicationController
     get '/problems' do
         problem = Problem.all
         problem.to_json(
-            only: [:difficulty, :grip_color, :technique, :location, :end_date, :problem_description])
+            only: [:id, :difficulty, :grip_color, :technique, :location, :end_date, :problem_description])
     end   
     
     get '/problems/:id' do
