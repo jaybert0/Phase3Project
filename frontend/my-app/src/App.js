@@ -61,10 +61,10 @@ function App() {
             <ClimberHome problem={problem} climbproblem={climbproblem}/>
           </Route>
           <Route exact path="/boltmonkey">
-            <MakerHome/>
+            <MakerHome problem={problem} climbproblem={climbproblem}/>
           </Route>
           <Route exact path="/about">
-            <MakerHome/>
+            <MakerHome />
           </Route>
           <Route exact path="">
             <LoginPage/>
