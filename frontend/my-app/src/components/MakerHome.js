@@ -1,10 +1,10 @@
 import ProblemForm from './ProblemForm';
-function MakerHome(){
+function MakerHome({problem, climbproblem}){
     return(
         <div>
 
             <h1>"sent to MakerHome"</h1>
-            <ProblemForm />
+            <ProblemForm problem={problem} climbProblem={climbproblem}/>
         </div>
         
     );

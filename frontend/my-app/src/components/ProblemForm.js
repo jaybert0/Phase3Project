@@ -7,23 +7,15 @@ import MenuItem from '@mui/material/MenuItem';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-// import DateAdapter from '@mui/lab/AdapterDateFns';
-// import LocalizationProvider from '@mui/lab/LocalizationProvider';
-// import DatePicker from '@mui/lab/DatePicker';
 
 
-function ProblemForm() {
+
+function ProblemForm({problem, climbproblem}) {
 
 
-    const holds = [
-        'Crimps',
-        'Jugs',
-        'Palming',
-        'Pincher',
-        'Side-pull',
-        'Slopers',
-        'Undercling',];
-    const [problem, setProblem] = useState({
+    const holds = problem.map((prob) => prob.technique);
+    console.log(holds)
+    const [formProblem, setFormProblem] = useState({
         difficulty: "",
         grip_color: "",
         technique: "",
@@ -35,7 +27,7 @@ function ProblemForm() {
     
 
     function handleSetProblem(attribute, input) {
-        setProblem({...problem, [attribute]: input});
+        setFormProblem({...formProblem, [attribute]: input});
       };
     return (
       <Box
@@ -50,15 +42,15 @@ function ProblemForm() {
         <TextField
           required
           onChange={(input) => handleSetProblem('difficulty',input)}
-          value={problem.difficulty}
+          value={formProblem.difficulty}
           id="filled-required"
-          label="Difficulty*"
+          label="Difficulty"
           variant="filled"
         />
         <TextField
           required
           onChange={(input) => handleSetProblem('grip_color',input)}
-          value={problem.grip_color}
+          value={formProblem.grip_color}
           id="filled-required"
           label="Grip Color"
           variant="filled"
@@ -68,9 +60,9 @@ function ProblemForm() {
         <Select
           labelId="grip-hold-highlight-required-label"
           id="grip-hold-highlight-required"
-          label="Grip Hold Highlight *"
+          label="Grip Hold Highlight"
           onChange={(input) => handleSetProblem('technique',input)}
-          value={problem.technique}
+          value={formProblem.technique}
         >
           {holds.map((hold) => (
           <MenuItem 
@@ -92,7 +84,7 @@ function ProblemForm() {
           id="location-required"
           label="Location *"
           onChange={(input) => handleSetProblem('location',input)}
-          value={problem.location}
+          value={formProblem.location}
         >
           <MenuItem value="">
             <em>None</em>
@@ -101,13 +93,13 @@ function ProblemForm() {
           <MenuItem value={1}>1</MenuItem>
           <MenuItem value={2}>2</MenuItem>
           <MenuItem value={3}>3</MenuItem>
-          <MenuItem value={4}>3</MenuItem>
-          <MenuItem value={5}>3</MenuItem>
-          <MenuItem value={6}>3</MenuItem>
-          <MenuItem value={7}>3</MenuItem>
-          <MenuItem value={8}>3</MenuItem>
-          <MenuItem value={9}>3</MenuItem>
-          <MenuItem value={10}>3</MenuItem>
+          <MenuItem value={4}>4</MenuItem>
+          <MenuItem value={5}>5</MenuItem>
+          <MenuItem value={6}>6</MenuItem>
+          <MenuItem value={7}>7</MenuItem>
+          <MenuItem value={8}>8</MenuItem>
+          <MenuItem value={9}>9</MenuItem>
+          <MenuItem value={10}>10</MenuItem>
         </Select>
         <FormHelperText>Required</FormHelperText>
       </FormControl>
@@ -118,18 +110,10 @@ function ProblemForm() {
           label="Route Description"
           variant="filled"
           onChange={(input) => handleSetProblem('problem_description',input)}
-          value={problem.problem_description}
+          value={formProblem.problem_description}
         />
 
-    {/* <LocalizationProvider dateAdapter={DateAdapter}>
-        <DatePicker
-          label="Date desktop"
-          inputFormat="MM/dd/yyyy"
-          onChange={(input) => handleSetProblem('end_date',input)}
-          value={problem.end_date}
-          renderInput={(params) => <TextField {...params} />}
-        />
-    </LocalizationProvider> */}
+    
 
       </div>
       </Box>
