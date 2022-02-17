@@ -38,7 +38,7 @@ import '../styles/ProblemCard.css'
         Difficulty: V{difficulty}
         </Typography>
         <Typography variant="body2">
-        Location {location}<br />
+        Location: {location}<br />
         Grip Color: {grip_color}<br />
         Grip Hold Highlight: {technique}<br />
         End Date: {end_date}

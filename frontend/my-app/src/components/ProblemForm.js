@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from "react";
+import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import InputLabel from '@mui/material/InputLabel';
@@ -17,7 +18,7 @@ function ProblemForm({problem, climbproblem}) {
 
     const initholds = problem.map((prob) => prob.technique);
     const holds = [...new Set(initholds)];
-    console.log(holds)
+    // console.log(holds)
     const [formProblem, setFormProblem] = useState({
         difficulty: "",
         grip_color: "",
@@ -30,8 +31,8 @@ function ProblemForm({problem, climbproblem}) {
     console.log(formProblem)
     
 
-    function handleSetProblem(attribute, input) {
-        setFormProblem({...formProblem, [attribute]: input});
+    function handleSetProblem(att, input) {
+        setFormProblem({...formProblem, [att]: input});
       };
     return (
       <Box
@@ -45,15 +46,16 @@ function ProblemForm({problem, climbproblem}) {
         <div>
         <TextField
           required
-          onChange={(input) => handleSetProblem('difficulty',input)}
+          // onChange={(input) => handleSetProblem('difficulty',input)}
           value={formProblem.difficulty}
+          onChange={(e) => handleSetProblem('difficulty', e.target.value)}
           id="filled-required"
           label="Difficulty"
           variant="filled"
         />
         <TextField
           required
-          onChange={(input) => handleSetProblem('grip_color',input)}
+          onChange={(e) => handleSetProblem('grip_color', e.target.value)}
           value={formProblem.grip_color}
           id="filled-required"
           label="Grip Color"
@@ -65,8 +67,8 @@ function ProblemForm({problem, climbproblem}) {
           labelId="grip-hold-highlight-required-label"
           id="grip-hold-highlight-required"
           label="Grip Hold Highlight"
-          onChange={(input) => handleSetProblem('technique',input)}
-          value={formProblem.technique}
+          onChange={(e) => handleSetProblem('technique',e.target.value)}
+          // value={formProblem.technique}
         >
           {holds.map((hold) => (
           <MenuItem 
@@ -87,7 +89,7 @@ function ProblemForm({problem, climbproblem}) {
           labelId="location-required-label"
           id="location-required"
           label="Location *"
-          onChange={(input) => handleSetProblem('location',input)}
+          onChange={(e) => handleSetProblem('location',e.target.value)}
           value={formProblem.location}
         >
           <MenuItem value="">
@@ -113,7 +115,7 @@ function ProblemForm({problem, climbproblem}) {
           id="filled-required"
           label="Route Description"
           variant="filled"
-          onChange={(input) => handleSetProblem('problem_description',input)}
+          onChange={(e) => handleSetProblem('problem_description',e.target.value)}
           value={formProblem.problem_description}
         />
 
@@ -121,14 +123,21 @@ function ProblemForm({problem, climbproblem}) {
         <DatePicker
           label="End Date"
           value={formProblem.end_date}
-          onChange={(input) => handleSetProblem('end_date',input)
-          }
+          format="dd-MM-yyyy"
+          onChange={(e) => {
+            handleSetProblem('end_date',e)}}
           renderInput={(params) => <TextField {...params} helperText={"*Required mm/dd/yyyy"}/>}
         />
       </LocalizationProvider>
 
       </div>
+      <div>
+      <Button variant='contained' id='submit' onClick={() => {
+                
+            }}>Submit!</Button>
+      </div>
       </Box>
+      
     )
     }
 export default ProblemForm
