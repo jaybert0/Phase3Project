@@ -13,21 +13,12 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker'
 
 
-function ProblemForm({problem, climbproblem}) {
+function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
 
 
     const initholds = problem.map((prob) => prob.technique);
     const holds = [...new Set(initholds)];
     // console.log(holds)
-    const [formProblem, setFormProblem] = useState({
-        difficulty: "",
-        grip_color: "",
-        technique: "",
-        location: "",
-        end_date: "",
-        problem_description: "",
-        maker_id: 1,
-    })
     console.log(formProblem)
     
 
@@ -67,6 +58,7 @@ function ProblemForm({problem, climbproblem}) {
           labelId="grip-hold-highlight-required-label"
           id="grip-hold-highlight-required"
           label="Grip Hold Highlight"
+          value={formProblem.technique}
           onChange={(e) => handleSetProblem('technique',e.target.value)}
           // value={formProblem.technique}
         >
