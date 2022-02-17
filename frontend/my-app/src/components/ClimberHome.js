@@ -4,7 +4,6 @@ import WallMap from './WallMap'
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
-import NativeSelect from '@mui/material/NativeSelect';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 
@@ -40,7 +39,7 @@ function ClimberHome({setSearch, problem, getProblems, climbproblem}){
                     <MenuItem value={"problem"}>All</MenuItem>
                     <MenuItem value={"Jugs"}>Jugs</MenuItem>
                     <MenuItem value={"Crimps"}>Crimps</MenuItem>
-                    <MenuItem value={"Pinchers"}>Pincher</MenuItem>
+                    <MenuItem value={"Pincher"}>Pincher</MenuItem>
                     <MenuItem value={"Slopers"}>Sloper</MenuItem>
                     <MenuItem value={"Undercling"}>Undercling</MenuItem>
                     <MenuItem value={"Sidepull"}>Sidepull</MenuItem>
