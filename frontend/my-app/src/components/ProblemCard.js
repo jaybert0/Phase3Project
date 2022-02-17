@@ -47,7 +47,7 @@ import '../styles/ProblemCard.css'
       <Box
       component="form"
       sx={{
-        '& > :not(style)': { m: 1, width: '45ch' },
+        '& > :not(style)': { m: 1, width: '35ch' },
         justifyContent: 'center',
         alignItems: "center"
       }}
@@ -55,6 +55,9 @@ import '../styles/ProblemCard.css'
       autoComplete="off"
     >
       <TextField id="filled-basic" label="Please add comments about the route" variant="filled" />
+      <Button size="small" variant="contained" color="primary" type="submit">
+        Submit
+    </Button>
     </Box>
     <Typography variant="body2">
     Please rate the route (⭐️Unsatisfactory | ⭐️⭐️⭐️⭐️⭐️ - Great)
