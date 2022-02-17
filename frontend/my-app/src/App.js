@@ -133,7 +133,7 @@ function App() {
             <MakerHome problem={problem} climbproblem={climbproblem}/>
           </Route>
           <Route exact path="/about">
-            <MakerHome/>
+            <MakerHome />
           </Route>
           <Route exact path="">
             <LoginPage/>
