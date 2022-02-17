@@ -9,7 +9,6 @@ User.create(
     username: "SpiderMan"
 )
 
-20.times { 
     Climbproblem.create(
         favorite:Faker::Boolean.boolean,
         in_progress:Faker::Boolean.boolean,
@@ -17,9 +16,144 @@ User.create(
         climber_feedback:Faker::TvShows::Simpsons.quote,
         route_rating:rand(0..5),
         user_id:1,
-        problem_id:rand(1..16)
+        problem_id:16
+    )  
+    Climbproblem.create(
+        favorite:Faker::Boolean.boolean,
+        in_progress:Faker::Boolean.boolean,
+        completed:Faker::Boolean.boolean,
+        climber_feedback:Faker::TvShows::Simpsons.quote,
+        route_rating:rand(0..5),
+        user_id:1,
+        problem_id:15
     )     
-}
+    Climbproblem.create(
+        favorite:Faker::Boolean.boolean,
+        in_progress:Faker::Boolean.boolean,
+        completed:Faker::Boolean.boolean,
+        climber_feedback:Faker::TvShows::Simpsons.quote,
+        route_rating:rand(0..5),
+        user_id:1,
+        problem_id:14
+    )     
+    Climbproblem.create(
+        favorite:Faker::Boolean.boolean,
+        in_progress:Faker::Boolean.boolean,
+        completed:Faker::Boolean.boolean,
+        climber_feedback:Faker::TvShows::Simpsons.quote,
+        route_rating:rand(0..5),
+        user_id:1,
+        problem_id:13
+    )     
+    Climbproblem.create(
+        favorite:Faker::Boolean.boolean,
+        in_progress:Faker::Boolean.boolean,
+        completed:Faker::Boolean.boolean,
+        climber_feedback:Faker::TvShows::Simpsons.quote,
+        route_rating:rand(0..5),
+        user_id:1,
+        problem_id:12
+    )     
+    Climbproblem.create(
+        favorite:Faker::Boolean.boolean,
+        in_progress:Faker::Boolean.boolean,
+        completed:Faker::Boolean.boolean,
+        climber_feedback:Faker::TvShows::Simpsons.quote,
+        route_rating:rand(0..5),
+        user_id:1,
+        problem_id:11
+    )     
+    Climbproblem.create(
+        favorite:Faker::Boolean.boolean,
+        in_progress:Faker::Boolean.boolean,
+        completed:Faker::Boolean.boolean,
+        climber_feedback:Faker::TvShows::Simpsons.quote,
+        route_rating:rand(0..5),
+        user_id:1,
+        problem_id:10
+    )     
+    Climbproblem.create(
+        favorite:Faker::Boolean.boolean,
+        in_progress:Faker::Boolean.boolean,
+        completed:Faker::Boolean.boolean,
+        climber_feedback:Faker::TvShows::Simpsons.quote,
+        route_rating:rand(0..5),
+        user_id:1,
+        problem_id:9
+    )     
+    Climbproblem.create(
+        favorite:Faker::Boolean.boolean,
+        in_progress:Faker::Boolean.boolean,
+        completed:Faker::Boolean.boolean,
+        climber_feedback:Faker::TvShows::Simpsons.quote,
+        route_rating:rand(0..5),
+        user_id:1,
+        problem_id:8
+    )     
+    Climbproblem.create(
+        favorite:Faker::Boolean.boolean,
+        in_progress:Faker::Boolean.boolean,
+        completed:Faker::Boolean.boolean,
+        climber_feedback:Faker::TvShows::Simpsons.quote,
+        route_rating:rand(0..5),
+        user_id:1,
+        problem_id:7
+    )     
+    Climbproblem.create(
+        favorite:Faker::Boolean.boolean,
+        in_progress:Faker::Boolean.boolean,
+        completed:Faker::Boolean.boolean,
+        climber_feedback:Faker::TvShows::Simpsons.quote,
+        route_rating:rand(0..5),
+        user_id:1,
+        problem_id:6
+    )     
+    Climbproblem.create(
+        favorite:Faker::Boolean.boolean,
+        in_progress:Faker::Boolean.boolean,
+        completed:Faker::Boolean.boolean,
+        climber_feedback:Faker::TvShows::Simpsons.quote,
+        route_rating:rand(0..5),
+        user_id:1,
+        problem_id:5
+    )        
+    Climbproblem.create(
+        favorite:Faker::Boolean.boolean,
+        in_progress:Faker::Boolean.boolean,
+        completed:Faker::Boolean.boolean,
+        climber_feedback:Faker::TvShows::Simpsons.quote,
+        route_rating:rand(0..5),
+        user_id:1,
+        problem_id:4
+    )     
+    Climbproblem.create(
+        favorite:Faker::Boolean.boolean,
+        in_progress:Faker::Boolean.boolean,
+        completed:Faker::Boolean.boolean,
+        climber_feedback:Faker::TvShows::Simpsons.quote,
+        route_rating:rand(0..5),
+        user_id:1,
+        problem_id:3
+    )     
+    Climbproblem.create(
+        favorite:Faker::Boolean.boolean,
+        in_progress:Faker::Boolean.boolean,
+        completed:Faker::Boolean.boolean,
+        climber_feedback:Faker::TvShows::Simpsons.quote,
+        route_rating:rand(0..5),
+        user_id:1,
+        problem_id:2
+    )     
+    Climbproblem.create(
+        favorite:Faker::Boolean.boolean,
+        in_progress:Faker::Boolean.boolean,
+        completed:Faker::Boolean.boolean,
+        climber_feedback:Faker::TvShows::Simpsons.quote,
+        route_rating:rand(0..5),
+        user_id:1,
+        problem_id:1
+    )     
+
 
 
 

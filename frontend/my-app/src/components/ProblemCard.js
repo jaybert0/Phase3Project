@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState, useEffect } from "react";
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -17,11 +18,53 @@ import PendingOutlinedIcon from '@mui/icons-material/PendingOutlined';
 import PendingIcon from '@mui/icons-material/Pending';
 import '../styles/ProblemCard.css'
   
-  function ProblemCard({key, difficulty, location, technique, grip_color, end_date, problem_description}) {
+  function ProblemCard({id, difficulty, location, technique, grip_color, end_date, problem_description, climbproblem}) {
+    const [routeRating, setRouteRatingState] = useState(2.5)
     const ratingChanged = (newRating) => {
-        console.log(newRating)
+        setRouteRatingState(newRating)
       }
-      const label = { inputProps: { 'aria-label': 'Favorite/InProgress/Completed' } };
+    const label = { inputProps: { 'aria-label': 'Favorite/InProgress/Completed' } };
+    
+
+
+    const [fav, setFavState] = useState(false)
+    function setFavorite(){
+      setFavState(!fav)
+      console.log(fav)
+    }
+    const [inProg, setInProgressState] = useState(true)
+    function setInProgress(){
+      setInProgressState(!inProg)
+      console.log(inProg)
+    }
+    const [complete, setCompletedState] = useState(false)
+    function setCompleted(){
+      setCompletedState(!complete)
+      console.log(complete)
+    }
+    
+    const [isMounted, setIsMounted]= useState(false)
+    climbproblem.map((climbproblem) => {
+      if(climbproblem.problem_id === id){
+        if(isMounted === false){
+          setFavState(climbproblem.favorite)
+          setInProgressState(climbproblem.in_progress)
+          setCompletedState(climbproblem.completed)
+          setRouteRatingState(climbproblem.route_rating)
+          // console.log(climbproblem.favorite)
+          setIsMounted(true)
+        }else{
+          console.log("already mounted")
+        }
+        // console.log(climbproblem.problem_id)
+        // console.log(climbproblem.favorite)
+        // console.log(climbproblem.in_progress)
+        // console.log(climbproblem.completed)
+        // console.log(climbproblem.route_rating)
+      }else{
+        console.log("not the droid you are looking for")
+      }
+    })
 
     return (
       <Box class="box" sx={{ 
@@ -71,12 +114,12 @@ import '../styles/ProblemCard.css'
         </Grid>
     <Grid container justifyContent="center">
       <Typography variant="body2">
-          Favorite:
-        <Checkbox {...label}  icon={<FavoriteBorder />} checkedIcon={<Favorite />} label="Favorite" sx={{transform: 'scale(1.5'}}/>
+        Favorite:
+        <Checkbox onClick={setFavorite} {...label} checked={fav} icon={<FavoriteBorder />} checkedIcon={<Favorite />} label="Favorite" sx={{transform: 'scale(1.5'}}/>
         In progress:
-        <Checkbox {...label}  icon={<PendingOutlinedIcon />} checkedIcon={<PendingIcon />} label="In Progress"/>
+        <Checkbox onClick={setInProgress} {...label}  checked={inProg} icon={<PendingOutlinedIcon />} checkedIcon={<PendingIcon />} label="In Progress"/>
         Completed:
-        <Checkbox {...label}  icon={<AssignmentTurnedInOutlinedIcon />} checkedIcon={<AssignmentTurnedInIcon />} label="Completed"/>
+        <Checkbox onClick={setCompleted} {...label}  checked={complete} icon={<AssignmentTurnedInOutlinedIcon />} checkedIcon={<AssignmentTurnedInIcon />} label="Completed"/>
         </Typography>
       </Grid>
     </React.Fragment>

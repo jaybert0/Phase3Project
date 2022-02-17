@@ -29,6 +29,7 @@ function ProblemForm({problem, climbproblem}) {
     function handleSetProblem(attribute, input) {
         setFormProblem({...formProblem, [attribute]: input});
       };
+      
     return (
       <Box
         component="form"

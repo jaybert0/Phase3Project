@@ -130,7 +130,7 @@ function App() {
             <ClimberHome getProblems={getProblems} setSearch={setSearch} problem={problem} climbproblem={climbproblem}/>
           </Route>
           <Route exact path="/boltmonkey">
-            <MakerHome problem={problem} climbproblem={climbproblem}/>
+            <MakerHome problem={problem} climbproblem={climbproblem} getClimbproblems={getClimbproblems}/>
           </Route>
           <Route exact path="/about">
             <MakerHome />
