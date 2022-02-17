@@ -10,8 +10,9 @@ function MakerHome({problem, climbproblem}){
             <h1>"sent to MakerHome"</h1>
             <ProblemForm problem={problem} climbProblem={climbproblem}/>
             {problem.map(problem => (
-                <MakerCard 
-                key={problem.id} 
+                <MakerCard
+                id={problem.id} 
+                problem={problem}
                 difficulty={problem.difficulty}
                 location={problem.location}
                 technique={problem.technique}
