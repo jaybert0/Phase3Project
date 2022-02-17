@@ -69,7 +69,7 @@ import '../styles/ProblemCard.css'
         size={24}
         color2={'#ffd700'} />
         </Grid>
-      <Grid container justifyContent="center">
+    <Grid container justifyContent="center">
       <Typography variant="body2">
           Favorite:
         <Checkbox {...label}  icon={<FavoriteBorder />} checkedIcon={<Favorite />} label="Favorite" sx={{transform: 'scale(1.5'}}/>
