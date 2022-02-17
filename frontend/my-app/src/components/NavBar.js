@@ -13,8 +13,8 @@ function TabPanel(props) {
     <div
       role="tabpanel"
       hidden={value !== index}
-      id={`vertical-tabpanel-${index}`}
-      aria-labelledby={`vertical-tab-${index}`}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
       {value === index && (
@@ -34,8 +34,8 @@ TabPanel.propTypes = {
 
 function a11yProps(index) {
   return {
-    id: `vertical-tab-${index}`,
-    'aria-controls': `vertical-tabpanel-${index}`,
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
   };
 }
 
@@ -47,11 +47,23 @@ function NavBar() {
   };
 
   return (
+    <Box sx={{ width: '100%' }}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+          <Tab label="Login" {...a11yProps(0)} component={Link} to="/"/>
+        <Tab label="Climber" {...a11yProps(1)} component={Link} to="/climberlogin" />
+        <Tab label="Route Setter" {...a11yProps(2)} component={Link} to="/boltmonkey"/>
+        <Tab label="About" {...a11yProps(3)} component={Link} to="/about"/>
+        </Tabs>
+      </Box>
+    </Box>
+  );
+  return (
     <Box
       sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex', height: 224 }}
     >
       <Tabs
-        orientation="vertical"
+        
         variant="scrollable"
         value={value}
         onChange={handleChange}

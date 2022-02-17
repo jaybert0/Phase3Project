@@ -113,6 +113,7 @@ function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
 
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <DatePicker
+        sx
           label="End Date"
           value={formProblem.end_date}
           format="dd-MM-yyyy"

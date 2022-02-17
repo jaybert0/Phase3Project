@@ -54,18 +54,18 @@ import '../styles/ProblemCard.css'
       console.log(complete)
     }
     
-    // const [canRun, setCanRun]= useState(false)
+    const [canRun, setCanRun]= useState(false)
     climbproblem.map((climbproblem) => {
       if(climbproblem.problem_id === id){
-        // if(canRun === false){
+        if(canRun === false){
           setFavState(climbproblem.favorite)
           setInProgressState(climbproblem.in_progress)
           setCompletedState(climbproblem.completed)
           setRouteRatingState(climbproblem.route_rating)
-        //   setCanRun(true)
-        // }else{
-        //   console.log("already mounted")
-        // }
+          setCanRun(true)
+        }else{
+          console.log("already mounted")
+        }
         // console.log(climbproblem.problem_id)
         // console.log(climbproblem.favorite)
         // console.log(climbproblem.in_progress)
