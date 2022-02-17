@@ -127,7 +127,7 @@ function App() {
         <SplashCard />
         <Switch>
           <Route exact path="/climberlogin">
-            <ClimberHome getProblems={getProblems} setSearch={setSearch} problem={problem} climbproblem={climbproblem}/>
+            <ClimberHome getProblems={getProblems} setSearch={setSearch} problem={problem} getClimbproblems={getClimbproblems} climbproblem={climbproblem}/>
           </Route>
           <Route exact path="/boltmonkey">
             <MakerHome problem={problem} climbproblem={climbproblem} getClimbproblems={getClimbproblems}/>

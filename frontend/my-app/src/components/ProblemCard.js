@@ -21,20 +21,40 @@ import '../styles/ProblemCard.css'
   function ProblemCard({id, difficulty, location, technique, grip_color, end_date, problem_description, climbproblem}) {
     const [routeRating, setRouteRatingState] = useState(2.5)
     const label = { inputProps: { 'aria-label': 'Favorite/InProgress/Completed' } };
-    
+    const CPF = `http://localhost:9292/climbproblems/${id}`
+
     function setRouteRating(e){
       setRouteRatingState(e)
     }
 
-
     const [feedback, setFeedback] = useState("")
     function submitFeedback(e){
       setFeedback(e)
-      console.log(e)
+      // console.log(e)
       postFeedback()
     }
+
+    const [submitter, setSubmitter] = useState({
+          in_progress: true,
+          favorite: false,
+          completed: false,
+          climber_feedback: "",
+          route_rating: 2.5
+  })
+  
+  function handleSetProblem(att, input) {
+    setSubmitter({...submitter, [att]: input});
+  };
+
+
     function postFeedback(){
-      console.log(feedback)
+      console.log(submitter)
+      // const config = {
+      //   headers: {"Content-Type": "application/json"},
+      //   method: "PATCH",
+      //   body: JSON.stringify(feedback)
+      // }
+      // fetch(CPF, config)
       // console.log(e.target.value)
     };
 
@@ -54,18 +74,18 @@ import '../styles/ProblemCard.css'
       console.log(complete)
     }
     
-    // const [canRun, setCanRun]= useState(false)
+    const [canRun, setCanRun]= useState(false)
     climbproblem.map((climbproblem) => {
       if(climbproblem.problem_id === id){
-        // if(canRun === false){
+        if(canRun === false){
           setFavState(climbproblem.favorite)
           setInProgressState(climbproblem.in_progress)
           setCompletedState(climbproblem.completed)
           setRouteRatingState(climbproblem.route_rating)
-        //   setCanRun(true)
-        // }else{
-        //   console.log("already mounted")
-        // }
+          setCanRun(true)
+        }else{
+          console.log("already mounted")
+        }
         // console.log(climbproblem.problem_id)
         // console.log(climbproblem.favorite)
         // console.log(climbproblem.in_progress)
@@ -75,6 +95,8 @@ import '../styles/ProblemCard.css'
         console.log("not the droid you are looking for")
       }
     })
+    
+    
 
     return (
       <Box class="box" sx={{ 
@@ -107,8 +129,12 @@ import '../styles/ProblemCard.css'
       noValidate
       autoComplete="off"
     >
-      <TextField value={feedback} onChange={(e) => submitFeedback(e.target.value)}id="filled-basic" label="Please add comments about the route" variant="filled" />
-     
+      <TextField 
+      value={feedback} 
+      // onChange={(e) => submitFeedback(e.target.value)}
+      id="filled-basic" 
+      label="Please add comments about the route" 
+      variant="filled" />
       {/* <Button onSubmit={submitFeedback} size="small" variant="contained" color="primary" type="submit">
         Submit
     </Button> */}
@@ -141,7 +167,6 @@ import '../styles/ProblemCard.css'
 
 
 export default ProblemCard
-
 
 
 
