@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState, useEffect } from "react";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import InputLabel from '@mui/material/InputLabel';
@@ -6,10 +7,36 @@ import MenuItem from '@mui/material/MenuItem';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
+// import DateAdapter from '@mui/lab/AdapterDateFns';
+// import LocalizationProvider from '@mui/lab/LocalizationProvider';
+// import DatePicker from '@mui/lab/DatePicker';
+
 
 function ProblemForm() {
+
+
+    const holds = [
+        'Crimps',
+        'Jugs',
+        'Palming',
+        'Pincher',
+        'Side-pull',
+        'Slopers',
+        'Undercling',];
+    const [problem, setProblem] = useState({
+        difficulty: "",
+        grip_color: "",
+        technique: "",
+        location: "",
+        end_date: "",
+        problem_description: "",
+        maker_id: 1,
+    })
+    
+
+    function handleSetProblem(attribute, input) {
+        setProblem({...problem, [attribute]: input});
+      };
     return (
       <Box
         component="form"
@@ -22,12 +49,16 @@ function ProblemForm() {
         <div>
         <TextField
           required
+          onChange={(input) => handleSetProblem('difficulty',input)}
+          value={problem.difficulty}
           id="filled-required"
           label="Difficulty*"
           variant="filled"
         />
         <TextField
           required
+          onChange={(input) => handleSetProblem('grip_color',input)}
+          value={problem.grip_color}
           id="filled-required"
           label="Grip Color"
           variant="filled"
@@ -37,20 +68,19 @@ function ProblemForm() {
         <Select
           labelId="grip-hold-highlight-required-label"
           id="grip-hold-highlight-required"
-          value={technique}
           label="Grip Hold Highlight *"
-          onChange={handleChange}
+          onChange={(input) => handleSetProblem('technique',input)}
+          value={problem.technique}
         >
-          <MenuItem value="">
-            <em>None</em>
+          {holds.map((hold) => (
+          <MenuItem 
+            key={hold}
+            value={hold}
+          >
+            {hold}
           </MenuItem>
-          <MenuItem value={Crimps}>Crimps</MenuItem>
-          <MenuItem value={Jugs}>Jugs</MenuItem>
-          <MenuItem value={Palming}>Palming</MenuItem>
-          <MenuItem value={Pincher}>Pincher</MenuItem>
-          <MenuItem value={Sidepull}>Sidepull</MenuItem>
-          <MenuItem value={Slopers}>Slopers</MenuItem>
-          <MenuItem value={Undercling}>Undercling</MenuItem>
+          ))}
+        
         </Select>
         <FormHelperText>Required</FormHelperText>
       </FormControl>
@@ -60,9 +90,9 @@ function ProblemForm() {
         <Select
           labelId="location-required-label"
           id="location-required"
-          value={location}
           label="Location *"
-          onChange={handleChange}
+          onChange={(input) => handleSetProblem('location',input)}
+          value={problem.location}
         >
           <MenuItem value="">
             <em>None</em>
@@ -87,15 +117,22 @@ function ProblemForm() {
           id="filled-required"
           label="Route Description"
           variant="filled"
+          onChange={(input) => handleSetProblem('problem_description',input)}
+          value={problem.problem_description}
         />
 
-<LocalizationProvider dateAdapter={AdapterDateFns}>
-        <DesktopDatePicker
+    {/* <LocalizationProvider dateAdapter={DateAdapter}>
+        <DatePicker
           label="Date desktop"
           inputFormat="MM/dd/yyyy"
-          value={value}
-          onChange={handleChange}
+          onChange={(input) => handleSetProblem('end_date',input)}
+          value={problem.end_date}
           renderInput={(params) => <TextField {...params} />}
         />
-        
+    </LocalizationProvider> */}
+
       </div>
+      </Box>
+    )
+    }
+export default ProblemForm
