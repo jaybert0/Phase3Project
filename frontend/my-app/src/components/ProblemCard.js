@@ -20,12 +20,23 @@ import '../styles/ProblemCard.css'
   
   function ProblemCard({id, difficulty, location, technique, grip_color, end_date, problem_description, climbproblem}) {
     const [routeRating, setRouteRatingState] = useState(2.5)
-    const ratingChanged = (newRating) => {
-        setRouteRatingState(newRating)
-      }
     const label = { inputProps: { 'aria-label': 'Favorite/InProgress/Completed' } };
     
+    function setRouteRating(e){
+      setRouteRatingState(e)
+    }
 
+
+    const [feedback, setFeedback] = useState("")
+    function submitFeedback(e){
+      setFeedback(e)
+      console.log(e)
+      postFeedback()
+    }
+    function postFeedback(){
+      console.log(feedback)
+      // console.log(e.target.value)
+    };
 
     const [fav, setFavState] = useState(false)
     function setFavorite(){
@@ -43,19 +54,18 @@ import '../styles/ProblemCard.css'
       console.log(complete)
     }
     
-    const [isMounted, setIsMounted]= useState(false)
+    // const [canRun, setCanRun]= useState(false)
     climbproblem.map((climbproblem) => {
       if(climbproblem.problem_id === id){
-        if(isMounted === false){
+        // if(canRun === false){
           setFavState(climbproblem.favorite)
           setInProgressState(climbproblem.in_progress)
           setCompletedState(climbproblem.completed)
           setRouteRatingState(climbproblem.route_rating)
-          // console.log(climbproblem.favorite)
-          setIsMounted(true)
-        }else{
-          console.log("already mounted")
-        }
+        //   setCanRun(true)
+        // }else{
+        //   console.log("already mounted")
+        // }
         // console.log(climbproblem.problem_id)
         // console.log(climbproblem.favorite)
         // console.log(climbproblem.in_progress)
@@ -97,10 +107,11 @@ import '../styles/ProblemCard.css'
       noValidate
       autoComplete="off"
     >
-      <TextField id="filled-basic" label="Please add comments about the route" variant="filled" />
-      <Button size="small" variant="contained" color="primary" type="submit">
+      <TextField value={feedback} onChange={(e) => submitFeedback(e.target.value)}id="filled-basic" label="Please add comments about the route" variant="filled" />
+     
+      {/* <Button onSubmit={submitFeedback} size="small" variant="contained" color="primary" type="submit">
         Submit
-    </Button>
+    </Button> */}
     </Box>
     <Typography variant="body2">
     Please rate the route (⭐️Unsatisfactory | ⭐️⭐️⭐️⭐️⭐️ - Great)
@@ -108,7 +119,7 @@ import '../styles/ProblemCard.css'
     <Grid container justifyContent="center">
       <ReactStars 
         count={5}
-        onChange={ratingChanged}
+        onChange={(e) => setRouteRating(e)}
         size={24}
         color2={'#ffd700'} />
         </Grid>
