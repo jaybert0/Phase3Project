@@ -28,7 +28,7 @@ class ClimbproblemsController < ApplicationController
         climb_problem.to_json
     end
 
-    get '/climbproblems/favs' do
+    get '/climbproblems-favs' do
         problems = Climbproblem.where('favorite = true').order(:problem_id)
         problems.to_json(only: [:favorite, :in_progress, :completed, :climber_feedback, :problem_id, :route_rating])
     end
