@@ -7,7 +7,9 @@ import MenuItem from '@mui/material/MenuItem';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import DatePicker from '@mui/lab/DatePicker'
 
 
 function ProblemForm({problem, climbproblem}) {
@@ -113,7 +115,15 @@ function ProblemForm({problem, climbproblem}) {
           value={formProblem.problem_description}
         />
 
-    
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
+        <DatePicker
+          label="End Date"
+          value={formProblem.end_date}
+          onChange={(input) => handleSetProblem('end_date',input)
+          }
+          renderInput={(params) => <TextField {...params} helperText={"*Required mm/dd/yyyy"}/>}
+        />
+      </LocalizationProvider>
 
       </div>
       </Box>
