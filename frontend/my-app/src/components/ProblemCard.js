@@ -67,7 +67,7 @@ import '../styles/ProblemCard.css'
         count={5}
         onChange={ratingChanged}
         size={24}
-        color2={'#ffd700'} /> */}
+        color2={'#ffd700'} />
         </Grid>
     <Grid container justifyContent="center">
       <Typography variant="body2">

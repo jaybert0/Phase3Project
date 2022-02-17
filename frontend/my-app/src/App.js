@@ -16,6 +16,8 @@ function App() {
   const EASYPROBLEM ="http://localhost:9292/problems-difficulty/easy"
   const HARDPROBLEM ="http://localhost:9292/problems-difficulty/hard"
 
+  const techniqueTest = "http://localhost:9292/problems-technique/"
+
   const [climbproblem, setClimbproblem] = useState([])
   const [maker, setMaker] = useState([])
   const [problem, setProblem] = useState([])
@@ -33,13 +35,6 @@ function App() {
       getEasyProblems()
     }else if(search === "hard"){
       getHardProblems()
-    }else if(search === "jugs"){
-      getTechniqueA()
-    }else if(search === "crimps"){
-      getTechniqueB()
-    }
-    else if(search === "pincher"){
-      getPincher()
     }
     // else if(search === "favorites"){
     //   getFavorites()
@@ -49,24 +44,15 @@ function App() {
     //   getCompleted()
     // }
     else{
-      console.log(problem)
+      getTechnique(search)
+      // console.log(search)
     }
   },[search])
-
-  function getTechniqueA(){
-    const jugs=problem.filter(instance => instance.technique === "Jugs")
-    setProblem(jugs)
-    console.log(search)
-  }
-  function getTechniqueB(){
-    const crimps=problem.filter(instance => instance.technique === "Crimps")
-    setProblem(crimps)
-    console.log(search)
-  }
-  function getPincher(){
-    const pincher=problem.filter(instance => instance.technique === "Pincher")
-    setProblem(pincher)
-    console.log(search)
+  function getTechnique(technique){
+    fetch(`http://localhost:9292/problems-technique/${technique}`)
+    .then((r) => r.json())
+    // .then((data) => console.log(data))
+    .then((data) => setProblem(data))
   }
 
   function getEasyProblems(){
@@ -83,28 +69,28 @@ function App() {
     .then((data) => setProblem(data))
   }
 
-  function getInProgress(){
-    // console.log("progress")
-    // fetch(PROBLEM)
-    // .then((r) => r.json())
-    // .then((data) => console.log(data))
-    // .then((data) => setProblem(data))
-  }
+  // function getInProgress(){
+  //   // console.log("progress")
+  //   // fetch(PROBLEM)
+  //   // .then((r) => r.json())
+  //   // .then((data) => console.log(data))
+  //   // .then((data) => setProblem(data))
+  // }
 
-  function getCompleted(){
-    console.log("never completed")
-    // fetch(COMPLETED)
-    // .then((r) => r.json())
-    // // .then((data) => console.log(data))
-    // .then((data) => setProblem(data))
-  }
-  function getFavorites(){
-    console.log("fixing you is my favorite")
-    // fetch(FAVORITE)
-    // .then((r) => r.json())
-    // // .then((data) => console.log(data))
-    // .then((data) => setProblem(data))
-  }
+  // function getCompleted(){
+  //   console.log("never completed")
+  //   // fetch(COMPLETED)
+  //   // .then((r) => r.json())
+  //   // // .then((data) => console.log(data))
+  //   // .then((data) => setProblem(data))
+  // }
+  // function getFavorites(){
+  //   console.log("fixing you is my favorite")
+  //   // fetch(FAVORITE)
+  //   // .then((r) => r.json())
+  //   // // .then((data) => console.log(data))
+  //   // .then((data) => setProblem(data))
+  // }
 
   function getProblems(){
     fetch(PROBLEM)
