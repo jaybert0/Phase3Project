@@ -47,7 +47,7 @@ function MakerCard({difficulty, location, technique, grip_color, end_date, probl
           <EditIcon onClick= {() => {
             if (problem.id === id) {
                 setFormProblem({
-                    id: id
+                    id: id,
                     difficulty: difficulty,
                     grip_color: grip_color,
                     technique: technique,
