@@ -6,10 +6,14 @@ import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import { render } from 'react-dom';
 
-function ClimberHome({setSearch, problem, getProblems, climbproblem}){
+function ClimberHome({setSearch, problem, getProblems, climbproblem, getClimbproblems}){
     // console.log(problem[0].difficulty)
-    // console.log(climbproblem[0])
+    // console.log(problem[0])
+    // console.log(climbproblem)
+
+    
 
     const delay = ms => new Promise(res => setTimeout(res, ms))
     const [technique, setTechnique] = useState('');
@@ -59,8 +63,8 @@ function ClimberHome({setSearch, problem, getProblems, climbproblem}){
                     setTechnique("")
                 }}>search hard</button>
             {problem.map(problem => (
-                <ProblemCard alignItems="center" justifyContent="center" id="problemcard"
-                key={problem.id} 
+                <ProblemCard climbproblem={climbproblem} alignItems="center" justifyContent="center" id="problemcard"
+                id={problem.id} 
                 difficulty={problem.difficulty}
                 location={problem.location}
                 technique={problem.technique}
