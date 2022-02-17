@@ -15,7 +15,8 @@ import DatePicker from '@mui/lab/DatePicker'
 function ProblemForm({problem, climbproblem}) {
 
 
-    const holds = problem.map((prob) => prob.technique);
+    const initholds = problem.map((prob) => prob.technique);
+    const holds = [...new Set(initholds)];
     console.log(holds)
     const [formProblem, setFormProblem] = useState({
         difficulty: "",
@@ -26,6 +27,7 @@ function ProblemForm({problem, climbproblem}) {
         problem_description: "",
         maker_id: 1,
     })
+    console.log(formProblem)
     
 
     function handleSetProblem(attribute, input) {
