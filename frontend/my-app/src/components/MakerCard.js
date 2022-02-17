@@ -13,6 +13,8 @@ import { blue } from '@mui/material/colors';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import ProblemForm from './ProblemForm'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 
 const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
@@ -36,20 +38,16 @@ function MakerCard({key, difficulty, location, technique, grip_color, end_date, 
       <Card sx={{ maxWidth: 345 }}>
         <CardHeader
           avatar={
-            <Avatar sx={{ bgcolor: red[500] }} aria-label="Route">
+            <Avatar sx={{ bgcolor: blue }} aria-label="Route">
               {problem_id}
             </Avatar>
-          }
-          action={
-            <IconButton aria-label="settings">
-              <MoreVertIcon />
-            </IconButton>
           }
           title= "Route: ${problem_id}"
           subheader= "Location: ${location}"
         />
         <CardContent>
           <Typography variant="body2" color="text.secondary">
+            Difficulty: V{difficulty}<br />
             Location: {location}<br />
             Grip Color: {grip_color}<br />
             Grip Hold Highlight: {technique}<br />
@@ -67,21 +65,22 @@ function MakerCard({key, difficulty, location, technique, grip_color, end_date, 
             <DeleteIcon />
           </IconButton>
           <ExpandMore
-            expand={expanded}
-            onClick={handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="show more"
-          >
-            <EditIcon />
-          </ExpandMore>
-        </CardActions>
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <CardContent>
-            <Typography paragraph>Edit:</Typography>
-            <ProblemForm/>
-           
-          </CardContent>
-        </Collapse>
-      </Card>
-    );
-  }
+          expand={expanded}
+          onClick={handleExpandClick}
+          aria-expanded={expanded}
+          aria-label="show more"
+        >
+          <EditIcon />
+        </ExpandMore>
+      </CardActions>
+      <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <CardContent>
+          <Typography paragraph>Edit:</Typography>
+          <ProblemForm></ProblemForm>
+        </CardContent>
+      </Collapse>
+    </Card>
+  );
+}
+
+  export default MakerCard

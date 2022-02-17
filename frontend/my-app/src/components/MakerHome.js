@@ -1,4 +1,8 @@
 import ProblemForm from './ProblemForm';
+import MakerCard from './MakerCard'
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import React from 'react';
+
 function MakerHome({problem, climbproblem}){
     return(
         <div>
@@ -15,6 +19,9 @@ function MakerHome({problem, climbproblem}){
                 end_date={problem.end_date}
                 problem_description={problem.problem_description}
                 />
+            )
+        )
+        }
         </div>
         
     );
