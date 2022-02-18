@@ -30,7 +30,8 @@ function MakerHome({problem, climbproblem}){
     })
     return(
         <div>
-            
+            <br/>
+            <br/>
             <ProblemForm problem={problem} climbProblem={climbproblem} formProblem={formProblem} setFormProblem={setFormProblem} sx={{position: 'sticky', top: 0}}/>
             <Box sx={{ justifyContent: 'flex-start'}}> 
             <br/>
