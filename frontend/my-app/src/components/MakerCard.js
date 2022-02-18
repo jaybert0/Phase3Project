@@ -27,7 +27,6 @@ function MakerCard({difficulty, location, technique, grip_color, end_date, probl
   const countinp = subproblem.filter(x => x.in_progress ===true).length
   const countcomp = subproblem.filter(x => x.completed ===true).length
   
-  console.log(subproblem[0].route_rating)
   useEffect(() => {
     setFavAdd(countfav)
     setinProgAdd(countinp)
@@ -35,29 +34,8 @@ function MakerCard({difficulty, location, technique, grip_color, end_date, probl
     setRating(subproblem[0].route_rating)
   }, [])
   
-  // function addFavorites () {
-  //   // console.log(favorite)
-  //   let count = 0
-  //   if (favorite === true) {
-  //     count = count + 1
-  //     setFavAdd(count)
-  //   } else {console.log("Not favorite")}
-  // }
-  // let count = 0
-  // climbproblem.map((cp) => {
-  //   if (cp.problem_id === id) {
-      
-  //     if (cp.favorite === true) {
-  //       count += 1;
-
-  //     } 
-  //   } 
-  // })
-  
-  // console.log(count)
     return (
       <Card sx={{ maxWidth: 345 }}>
-        {/* <button onClick={() => addFavorites()}>Fav</button> */}
         <CardContent>
         <Typography variant="body1" color="text.primary">
             Route: {id} <br />           
@@ -81,8 +59,7 @@ function MakerCard({difficulty, location, technique, grip_color, end_date, probl
           <IconButton aria-label="delete">
             <DeleteIcon />
           </IconButton>
-          <IconButton sx={{zIndex: 0}} aria-label="edit">
-          <EditIcon  onClick= {() => {
+          <IconButton sx={{zIndex: 0}} aria-label="edit" onClick= {() => {
             if (problem.id === id) {
                 setFormProblem({
                     id: id,
@@ -96,8 +73,9 @@ function MakerCard({difficulty, location, technique, grip_color, end_date, probl
             }
                 )
             }
-            console.log(difficulty)
-          } } />
+            
+          } }>
+          <EditIcon   />
           </IconButton>
       </CardActions>
     </Card>
