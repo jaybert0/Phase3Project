@@ -54,6 +54,7 @@ function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
         console.log("patch setup")
 
       }
+      window.location.reload()
     }
 
     return (
