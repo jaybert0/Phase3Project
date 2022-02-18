@@ -201,6 +201,7 @@ import '../styles/ProblemCard.css'
       autoComplete="off"
     >
       <TextField
+      sx={{zIndex: 0}}
       name="climber feedback" 
       value={climberFeedback}
       onChange={(e) => {
