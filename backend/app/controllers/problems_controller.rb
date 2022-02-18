@@ -34,18 +34,13 @@ class ProblemsController < ApplicationController
             only: [:difficulty, :grip_color, :technique, :location, :end_date, :problem_description])
     end   
 
-    get '/problems/:id' do
-        Problem.find(params[:id]).to_json(
-            only: [:difficulty, :grip_color, :technique, :location, :end_date, :problem_description])
-    end
-
+    
     get '/problems-climb' do
         Problem.all.to_json(
             only: [:id, :difficulty, :grip_color, :technique, :location, :end_date, :problem_description],
             include: {climbproblems: {only: [:favorite, :in_progress, :completed, :route_rating]}}   
         )
     end
-
     patch '/problems/:id' do
         problem = Problem.find(params[:id])
         problem.update(
@@ -58,6 +53,11 @@ class ProblemsController < ApplicationController
         )
         problem.to_json
         
+    end
+    
+    get '/problems/:id' do
+        Problem.find(params[:id]).to_json(
+            only: [:difficulty, :grip_color, :technique, :location, :end_date, :problem_description])
     end
 
     delete '/problems/:id' do

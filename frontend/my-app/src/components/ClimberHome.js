@@ -31,7 +31,7 @@ function ClimberHome({setSearch, problem, getProblems, climbproblem, getClimbpro
         <div>
             <WallMap id="wallmap" />
             <br></br>
-            <Box sx={{ minWidth: 120 }}>
+            {/* <Box sx={{ minWidth: 120 }}>
                 <FormControl fullWidth>
                     <InputLabel sx={{zIndex: -1}} id="demo-simple-select-label">Climbing Technique</InputLabel>
                     <Select
@@ -51,18 +51,18 @@ function ClimberHome({setSearch, problem, getProblems, climbproblem, getClimbpro
                     <MenuItem value={"Palming"}>Palming</MenuItem>
                     </Select>
                 </FormControl>
-            </Box>
+            </Box> */}
                 {/* <button onClick={() => setSearch("favorites")}>search favorite</button>
                 <button onClick={() => setSearch("in progress")}>search in progress</button>
                 <button onClick={() => setSearch("completed")}>search completed</button> */}
-                <Button variant='contained' onClick={() => {
+                {/* <Button variant='contained' onClick={() => {
                     setSearch("easy");
                     setTechnique("")
                 }}>Sort Ascending Difficulty</Button>
                  <Button variant='contained' onClick={() => {
                     setSearch("hard");
                     setTechnique("")
-                }}>Sort Ascending Difficulty</Button>
+                }}>Sort Ascending Difficulty</Button> */}
             {problem.map(problem => (
                 <ProblemCard climbproblem={climbproblem} alignItems="center" justifyContent="center" id="problemcard"
                 id={problem.id} 
