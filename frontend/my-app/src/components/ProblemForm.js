@@ -113,15 +113,24 @@ function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
       <LocalizationProvider dateAdapter={AdapterDateFns} >
        
   
-        <DatePicker
-          
-          label="End Date"
+        {/* <DatePicker
+          label="End Date*"
           value={formProblem.end_date}
           format="dd-MM-yyyy"
           onChange={(e) => {
             handleSetProblem('end_date',e)}}
-          renderInput={(params) => <TextField {...params} helperText={"*Required mm/dd/yyyy"}/>}
+          renderInput={(params) => <TextField {...params} helperText={"mm/dd/yyyy"}/>}
+        /> */}
+        <DatePicker
+        disableFuture
+          label="End Date*"
+          value={formProblem.end_date}
+          format="dd-MM-yyyy"
+          onChange={(e) => {
+            handleSetProblem('end_date',e)}}
+          renderInput={(params) => <TextField {...params} helperText={"mm/dd/yyyy"}/>}
         />
+        
       
       </LocalizationProvider>
       </Stack>
