@@ -2,6 +2,7 @@ import ProblemForm from './ProblemForm';
 import { useState } from 'react';
 import MakerCard from './MakerCard'
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -9,7 +10,7 @@ import { styled } from '@mui/material/styles';
 import React from 'react';
 
 function MakerHome({problem, climbproblem}){
-
+// console.log(problem)
     const Item = styled(Paper)(({ theme }) => ({
         ...theme.typography.body2,
         padding: theme.spacing(2),
@@ -49,6 +50,12 @@ function MakerHome({problem, climbproblem}){
                 grip_color={problem.grip_color}
                 end_date={problem.end_date}
                 problem_description={problem.problem_description}
+                // favorite={problem.climbproblems[0].favorite}
+                // in_progress={problem.climbproblems[0].in_progress}
+                // completed={problem.climbproblems[0].completed}
+                subproblem={problem.climbproblems}
+                climbproblem={climbproblem}
+
                 />
                 </Item>
                 </Grid>

@@ -29,9 +29,9 @@ class ProblemsController < ApplicationController
             only: [:difficulty, :grip_color, :technique, :location, :end_date, :problem_description])
     end
 
-    get '/problems-climb/:id' do
-        Problem.find(params[:id]).to_json(
-            only: [:difficulty, :grip_color, :technique, :location, :end_date, :problem_description],
+    get '/problems-climb' do
+        Problem.all.to_json(
+            only: [:id, :difficulty, :grip_color, :technique, :location, :end_date, :problem_description],
             include: {climbproblems: {only: [:favorite, :in_progress, :completed, :route_rating]}}   
         )
     end

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useState, useEffect } from "react";
 import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import InputLabel from '@mui/material/InputLabel';
@@ -11,6 +12,7 @@ import Select from '@mui/material/Select';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker'
+import "../styles/ProblemForm.css"
 
 
 function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
@@ -19,7 +21,7 @@ function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
     const initholds = problem.map((prob) => prob.technique);
     const holds = [...new Set(initholds)];
     // console.log(holds)
-    console.log(formProblem)
+    // console.log(formProblem)
     
 
     function handleSetProblem(att, input) {
@@ -27,26 +29,31 @@ function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
       };
     return (
       <Box
+      maxWidth
         component="form"
         sx={{
-          '& .MuiTextField-root': { m: 1, width: '25ch' },
+          '& .MuiTextField-root': { m: 1, width: '75%' },
           position: 'sticky', top: 0,
-          bgcolor: 'white'
+          bgcolor: 'white',
+          zIndex: 500
         }}
         noValidate
         autoComplete="off"
       >
         <div>
+        <Stack spacing={2} direction="row">
         <TextField
+          sx={{maxWidth:'20%'}}
           required
           // onChange={(input) => handleSetProblem('difficulty',input)}
           value={formProblem.difficulty}
           onChange={(e) => handleSetProblem('difficulty', e.target.value)}
           id="filled-required"
-          label="Difficulty"
+          label="Difficulty - V"
           variant="filled"
         />
         <TextField
+        sx={{maxWidth:'20%'}}
           required
           onChange={(e) => handleSetProblem('grip_color', e.target.value)}
           value={formProblem.grip_color}
@@ -54,7 +61,7 @@ function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
           label="Grip Color"
           variant="filled"
         />
-        <FormControl required sx={{ m: 1, minWidth: 120 }}>
+        <FormControl required sx={{ m: 1, minWidth: 150 }}>
         <InputLabel id="grip-hold-highlight">Grip Hold Highlight</InputLabel>
         <Select
           labelId="grip-hold-highlight-required-label"
@@ -77,7 +84,7 @@ function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
         <FormHelperText>Required</FormHelperText>
       </FormControl>
 
-      <FormControl required sx={{ m: 1, minWidth: 120 }}>
+      <FormControl required sx={{ m: 1, minWidth: 150 }}>
         <InputLabel id="location">Location</InputLabel>
         <Select
           labelId="location-required-label"
@@ -103,12 +110,11 @@ function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
         </Select>
         <FormHelperText>Required</FormHelperText>
       </FormControl>
-
-        
-
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <LocalizationProvider dateAdapter={AdapterDateFns} >
+       
+  
         <DatePicker
-        sx
+          
           label="End Date"
           value={formProblem.end_date}
           format="dd-MM-yyyy"
@@ -116,10 +122,13 @@ function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
             handleSetProblem('end_date',e)}}
           renderInput={(params) => <TextField {...params} helperText={"*Required mm/dd/yyyy"}/>}
         />
+      
       </LocalizationProvider>
+      </Stack>
       <div></div>
       <TextField
-      fullWidth
+          multiline
+          maxRows={3}
           required
           id="filled-required"
           label="Route Description"
@@ -134,6 +143,7 @@ function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
             }}>Submit!</Button>
       </div>
       </Box>
+      
       
     )
     }

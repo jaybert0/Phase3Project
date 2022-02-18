@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useState, useEffect } from "react";
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
+
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
@@ -102,57 +103,6 @@ import '../styles/ProblemCard.css'
       }
     })
     
-
-
-  // function handleSubmissionChange(e){
-  //   setSubmitter((prevState) => {
-  //     if(e.target.name === "in progress"){
-  //       return({
-  //         in_progress: !e.target.value,
-  //         favorite: prevState.favorite,
-  //         completed: prevState.completed,
-  //         climber_feedback: prevState.climber_feedback,
-  //         route_rating: prevState.route_rating
-  //       })
-  //     }else if(e.target.name === "favorite"){
-  //       return({
-  //         in_progress: prevState.in_progress,
-  //         favorite: !e.target.value,
-  //         completed: prevState.completed,
-  //         climber_feedback: prevState.climber_feedback,
-  //         route_rating: prevState.route_rating
-  //       })
-  //     }else if(e.target.name === "completed"){
-  //       return({
-  //         in_progress: prevState.in_progress,
-  //         favorite: prevState.favorite,
-  //         completed: !e.target.value,
-  //         climber_feedback: prevState.climber_feedback,
-  //         route_rating: prevState.route_rating
-  //       })
-  //     }else if(e.target.name === "climber feedback"){
-  //       return({
-  //         in_progress: prevState.in_progress,
-  //         favorite: prevState.favorite,
-  //         completed: prevState.completed,
-  //         climber_feedback: e.target.value,
-  //         route_rating: prevState.route_rating
-  //       })
-  //     }else if(e.target.name === "route rating"){
-  //       return({
-  //         in_progress: prevState.in_progress,
-  //         favorite: prevState.favorite,
-  //         completed: prevState.completed,
-  //         climber_feedback: prevState.climber_feedback,
-  //         route_rating: e.target.value
-  //       })
-  //     }else{
-  //       return(
-  //         null
-  //       )
-  //     }
-  //   })
-  // }
   useEffect(() => {
     postFeedback()
   },[submitter, fav, inProg, complete, routeRating])
@@ -165,7 +115,7 @@ import '../styles/ProblemCard.css'
     }
     fetch(CPF, config)
     .then(r => r.json())
-    .then((data) => console.log(data))
+    // .then((data) => console.log(data))
     // console.log(submitter)
   };
 
