@@ -19,12 +19,43 @@ function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
     const initholds = problem.map((prob) => prob.technique);
     const holds = [...new Set(initholds)];
     // console.log(holds)
-    console.log(formProblem)
-    
+    // console.log(formProblem)
+    const CLIMBFORMPROBLEMSUBMITTER = `http://localhost:9292/problems`
+    const CLIMBFORMPROBLEMUPDATER = `http://localhost:9292/problems/${formProblem.id}`
 
     function handleSetProblem(att, input) {
         setFormProblem({...formProblem, [att]: input});
       };
+
+    function amISubmission(){
+      if(formProblem.id === ''){
+        const config = {
+          headers: {"Content-Type": "application/json"},
+          method: "POST",
+          body: JSON.stringify(formProblem)
+        }
+        fetch(CLIMBFORMPROBLEMSUBMITTER, config)
+        .then(r => r.json())
+        .then((data) => console.log(data))
+        // console.log(formProblem)
+        console.log("submit button")
+        console.log("post setup")
+
+      }else{
+        const config = {
+          headers: {"Content-Type": "application/json"},
+          method: "PATCH",
+          body: JSON.stringify(formProblem)
+        }
+        fetch(CLIMBFORMPROBLEMUPDATER, config)
+        .then(r => r.json())
+        .then((data) => console.log(data))
+        console.log("edit button")
+        console.log("patch setup")
+
+      }
+    }
+
     return (
       <Box
         component="form"
@@ -129,9 +160,11 @@ function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
         />
       </div>
       <div>
-      <Button variant='contained' id='submit' onClick={() => {
-                
-            }}>Submit!</Button>
+
+
+      <Button variant='contained' id='submit' onClick={() => amISubmission()}>Submit!</Button>
+      
+      
       </div>
       </Box>
       
