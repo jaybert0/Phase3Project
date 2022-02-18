@@ -25,56 +25,49 @@ import '../styles/ProblemCard.css'
 
     function setRouteRating(e){
       setRouteRatingState(e)
+      handleSetProblem("route_rating", e)
     }
 
-  //   const [submitter, setSubmitter] = useState({
-  //         in_progress: true,
-  //         favorite: false,
-  //         completed: false,
-  //         climber_feedback: "",
-  //         route_rating: 2.5
-  // })
-  // useEffect(() => {
-  //   postFeedback()
-  //   console.log(submitter)
-  // },[submitter])
+
+
   
-  // function handleSetProblem(att, input) {
-  //   setSubmitter({...submitter, [att]: input});
-  // };
+  function handleSetProblem(att, input) {
+    setSubmitter({...submitter, [att]: input});
+  };
 
 
-  //   function postFeedback(){
-  //     const config = {
-  //       headers: {"Content-Type": "application/json"},
-  //       method: "PATCH",
-  //       body: JSON.stringify(submitter)
-  //     }
-  //     // fetch(CPF, config)
-  //     // .then(r => r.json())
-  //     // .then((data) => console.log(data))
-  //   };
+ 
 
     const [climberFeedback, setClimberFeedbackState] = useState("")
     function setClimberFeedback(e){
       setClimberFeedbackState(e.target.value)
+      handleSetProblem("climber_feedback", e.target.value)
     }
     const [fav, setFavState] = useState(false)
     function setFavorite(){
       setFavState(!fav)
-      console.log(fav)
+      handleSetProblem("favorite", !fav)
+      // console.log(fav)
     }
     const [inProg, setInProgressState] = useState(true)
     function setInProgress(){
       setInProgressState(!inProg)
-      console.log(inProg)
+      handleSetProblem("in_progress", !inProg)
+      // console.log(inProg)
     }
     const [complete, setCompletedState] = useState(false)
     function setCompleted(){
       setCompletedState(!complete)
-      console.log(complete)
+      handleSetProblem("completed", !complete)
+      // console.log(complete)
     }
-    
+    const [submitter, setSubmitter] = useState({
+      in_progress: true,
+      favorite: false,
+      completed: false,
+      climber_feedback: "climberFeedback",
+      route_rating: 2.5
+  })
     const [canRun, setCanRun]= useState(false)
     climbproblem.map((climbproblem) => {
       if(climbproblem.problem_id === id){
@@ -89,6 +82,12 @@ import '../styles/ProblemCard.css'
           setInProgressState(climbproblem.in_progress)
           setCompletedState(climbproblem.completed)
           setRouteRatingState(climbproblem.route_rating)
+          setSubmitter({
+            in_progress: climbproblem.in_progress,
+            favorite: climbproblem.favorite,
+            completed: climbproblem.completed,
+            climber_feedback: climbproblem.climber_feedback,
+            route_rating: climbproblem.route_rating})
           setCanRun(true)
         }else{
           console.log("already mounted")
@@ -103,7 +102,72 @@ import '../styles/ProblemCard.css'
       }
     })
     
-    
+
+
+  // function handleSubmissionChange(e){
+  //   setSubmitter((prevState) => {
+  //     if(e.target.name === "in progress"){
+  //       return({
+  //         in_progress: !e.target.value,
+  //         favorite: prevState.favorite,
+  //         completed: prevState.completed,
+  //         climber_feedback: prevState.climber_feedback,
+  //         route_rating: prevState.route_rating
+  //       })
+  //     }else if(e.target.name === "favorite"){
+  //       return({
+  //         in_progress: prevState.in_progress,
+  //         favorite: !e.target.value,
+  //         completed: prevState.completed,
+  //         climber_feedback: prevState.climber_feedback,
+  //         route_rating: prevState.route_rating
+  //       })
+  //     }else if(e.target.name === "completed"){
+  //       return({
+  //         in_progress: prevState.in_progress,
+  //         favorite: prevState.favorite,
+  //         completed: !e.target.value,
+  //         climber_feedback: prevState.climber_feedback,
+  //         route_rating: prevState.route_rating
+  //       })
+  //     }else if(e.target.name === "climber feedback"){
+  //       return({
+  //         in_progress: prevState.in_progress,
+  //         favorite: prevState.favorite,
+  //         completed: prevState.completed,
+  //         climber_feedback: e.target.value,
+  //         route_rating: prevState.route_rating
+  //       })
+  //     }else if(e.target.name === "route rating"){
+  //       return({
+  //         in_progress: prevState.in_progress,
+  //         favorite: prevState.favorite,
+  //         completed: prevState.completed,
+  //         climber_feedback: prevState.climber_feedback,
+  //         route_rating: e.target.value
+  //       })
+  //     }else{
+  //       return(
+  //         null
+  //       )
+  //     }
+  //   })
+  // }
+  useEffect(() => {
+    postFeedback()
+  },[submitter, fav, inProg, complete, routeRating])
+
+  function postFeedback(){
+    const config = {
+      headers: {"Content-Type": "application/json"},
+      method: "PATCH",
+      body: JSON.stringify(submitter)
+    }
+    fetch(CPF, config)
+    .then(r => r.json())
+    .then((data) => console.log(data))
+    // console.log(submitter)
+  };
 
     return (
       <Box class="box" sx={{ 
@@ -129,18 +193,20 @@ import '../styles/ProblemCard.css'
       <Box
       component="form"
       sx={{
-        '& > :not(style)': { m: 1, width: '75ch' },
+        '& > :not(style)': { m: 1, width: '35ch' },
         justifyContent: 'center',
         alignItems: "center"
       }}
       noValidate
       autoComplete="off"
     >
-      <TextField 
+      <TextField
+      name="climber feedback" 
       value={climberFeedback}
-      sx={{zIndex: 0}}
       onChange={(e) => {
         setClimberFeedback(e)
+        // handleSubmissionChange(e)
+        console.log(submitter)
         // handleSetProblem("climber_feedback", e.target.value)
         // postFeedback()
       }}
@@ -157,7 +223,8 @@ import '../styles/ProblemCard.css'
     Please rate the route (⭐️Unsatisfactory | ⭐️⭐️⭐️⭐️⭐️ - Great)
         </Typography>
     <Grid container justifyContent="center">
-      <ReactStars 
+      <ReactStars
+        name="route rating" 
         count={5}
         value={routeRating}
         onChange={(e) => setRouteRating(e)}
@@ -167,11 +234,14 @@ import '../styles/ProblemCard.css'
     <Grid container justifyContent="center">
       <Typography variant="body2">
         Favorite:
-        <Checkbox onClick={setFavorite} {...label} checked={fav} icon={<FavoriteBorder />} checkedIcon={<Favorite />} label="Favorite" sx={{transform: 'scale(1.5'}}/>
+        <Checkbox name="favorite" onChange={(e) => {
+          // handleSubmissionChange(e)
+          console.log(submitter)
+          }} onClick={setFavorite} {...label} checked={fav} icon={<FavoriteBorder />} checkedIcon={<Favorite />} label="Favorite" sx={{transform: 'scale(1.5'}}/>
         In progress:
-        <Checkbox onClick={setInProgress} {...label}  checked={inProg} icon={<PendingOutlinedIcon />} checkedIcon={<PendingIcon />} label="In Progress"/>
+        <Checkbox name="in progress" onClick={setInProgress} {...label}  checked={inProg} icon={<PendingOutlinedIcon />} checkedIcon={<PendingIcon />} label="In Progress"/>
         Completed:
-        <Checkbox onClick={setCompleted} {...label}  checked={complete} icon={<AssignmentTurnedInOutlinedIcon />} checkedIcon={<AssignmentTurnedInIcon />} label="Completed"/>
+        <Checkbox name="completed" onClick={setCompleted} {...label}  checked={complete} icon={<AssignmentTurnedInOutlinedIcon />} checkedIcon={<AssignmentTurnedInIcon />} label="Completed"/>
         </Typography>
       </Grid>
     </React.Fragment>
@@ -182,13 +252,6 @@ import '../styles/ProblemCard.css'
 
 
 export default ProblemCard
-
-
-
-
-
-
-
 
 
 
