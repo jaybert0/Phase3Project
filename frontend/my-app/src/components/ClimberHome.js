@@ -2,6 +2,7 @@ import { useState } from 'react';
 import ProblemCard from './ProblemCard'
 import WallMap from './WallMap'
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button'
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import MenuItem from '@mui/material/MenuItem';
@@ -32,7 +33,7 @@ function ClimberHome({setSearch, problem, getProblems, climbproblem, getClimbpro
             <br></br>
             <Box sx={{ minWidth: 120 }}>
                 <FormControl fullWidth>
-                    <InputLabel id="demo-simple-select-label">Climbing Technique</InputLabel>
+                    <InputLabel sx={{zIndex: -1}} id="demo-simple-select-label">Climbing Technique</InputLabel>
                     <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
@@ -54,14 +55,14 @@ function ClimberHome({setSearch, problem, getProblems, climbproblem, getClimbpro
                 {/* <button onClick={() => setSearch("favorites")}>search favorite</button>
                 <button onClick={() => setSearch("in progress")}>search in progress</button>
                 <button onClick={() => setSearch("completed")}>search completed</button> */}
-                <button onClick={() => {
+                <Button variant='contained' onClick={() => {
                     setSearch("easy");
                     setTechnique("")
-                }}>search easy</button>
-                 <button onClick={() => {
+                }}>Sort Ascending Difficulty</Button>
+                 <Button variant='contained' onClick={() => {
                     setSearch("hard");
                     setTechnique("")
-                }}>search hard</button>
+                }}>Sort Ascending Difficulty</Button>
             {problem.map(problem => (
                 <ProblemCard climbproblem={climbproblem} alignItems="center" justifyContent="center" id="problemcard"
                 id={problem.id} 

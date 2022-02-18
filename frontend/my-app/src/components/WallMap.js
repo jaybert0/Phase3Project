@@ -11,9 +11,10 @@ function WallMap () {
     return (
         <Container id="map" sx={{
             border: "solid black 2px",
-            bgcolor: 'white'}}>
+            bgcolor: 'white',
+            width: 'maxWidth'}}>
         <Box id="mapbox" sx={{
-        width: maxWidth,
+        width: 'maxWidth',
         height: maxHeight,
         backgroundColor: 'primary.main'}}>
             <img src={wall} alt="Facility Map" id="wallmap"/>

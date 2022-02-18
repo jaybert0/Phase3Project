@@ -13,21 +13,12 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker'
 
 
-function ProblemForm({problem, climbproblem}) {
+function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
 
 
     const initholds = problem.map((prob) => prob.technique);
     const holds = [...new Set(initholds)];
     // console.log(holds)
-    const [formProblem, setFormProblem] = useState({
-        difficulty: "",
-        grip_color: "",
-        technique: "",
-        location: "",
-        end_date: "",
-        problem_description: "",
-        maker_id: 1,
-    })
     console.log(formProblem)
     
 
@@ -39,6 +30,8 @@ function ProblemForm({problem, climbproblem}) {
         component="form"
         sx={{
           '& .MuiTextField-root': { m: 1, width: '25ch' },
+          position: 'sticky', top: 0,
+          bgcolor: 'white'
         }}
         noValidate
         autoComplete="off"
@@ -67,6 +60,7 @@ function ProblemForm({problem, climbproblem}) {
           labelId="grip-hold-highlight-required-label"
           id="grip-hold-highlight-required"
           label="Grip Hold Highlight"
+          value={formProblem.technique}
           onChange={(e) => handleSetProblem('technique',e.target.value)}
           // value={formProblem.technique}
         >
@@ -110,17 +104,11 @@ function ProblemForm({problem, climbproblem}) {
         <FormHelperText>Required</FormHelperText>
       </FormControl>
 
-        <TextField
-          required
-          id="filled-required"
-          label="Route Description"
-          variant="filled"
-          onChange={(e) => handleSetProblem('problem_description',e.target.value)}
-          value={formProblem.problem_description}
-        />
+        
 
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <DatePicker
+        sx
           label="End Date"
           value={formProblem.end_date}
           format="dd-MM-yyyy"
@@ -129,7 +117,16 @@ function ProblemForm({problem, climbproblem}) {
           renderInput={(params) => <TextField {...params} helperText={"*Required mm/dd/yyyy"}/>}
         />
       </LocalizationProvider>
-
+      <div></div>
+      <TextField
+      fullWidth
+          required
+          id="filled-required"
+          label="Route Description"
+          variant="filled"
+          onChange={(e) => handleSetProblem('problem_description',e.target.value)}
+          value={formProblem.problem_description}
+        />
       </div>
       <div>
       <Button variant='contained' id='submit' onClick={() => {
