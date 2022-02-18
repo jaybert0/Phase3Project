@@ -34,6 +34,14 @@ function MakerCard({difficulty, location, technique, grip_color, end_date, probl
     setRating(subproblem[0].route_rating)
   }, [])
   
+  function deleteCard(){
+    console.log(id)
+    const config = {method: "DELETE"}
+    fetch(`http://localhost:9292/problems/${id}`, config)
+    .then((r) => r.json())
+    .then((data) => console.log(data))
+    window.location.reload()
+  }
     return (
       <Card sx={{ maxWidth: 345 }}>
         <CardContent>
@@ -57,7 +65,7 @@ function MakerCard({difficulty, location, technique, grip_color, end_date, probl
         </CardContent>
         <CardActions disableSpacing>
           <IconButton aria-label="delete">
-            <DeleteIcon />
+            <DeleteIcon onClick={() => deleteCard()}/>
           </IconButton>
           <IconButton sx={{zIndex: 0}} aria-label="edit" onClick= {() => {
             if (problem.id === id) {
