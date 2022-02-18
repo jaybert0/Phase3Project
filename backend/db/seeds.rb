@@ -302,4 +302,4 @@ User.create(
         maker_id:1
         )
     
-puts "✅ Done seeding!"
+puts "✅ Done seeding!
