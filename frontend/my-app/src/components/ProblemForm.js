@@ -54,7 +54,7 @@ function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
           console.log("edit button")
   
         }
-        // window.location.reload()
+        window.location.reload()
       }
       
     return (
