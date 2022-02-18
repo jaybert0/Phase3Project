@@ -10,6 +10,16 @@ class ProblemsController < ApplicationController
             problem_description: params[:problem_description],
             maker_id: Maker.first.id
         )
+        newcp = Problem.last.id
+        climb_problem = Climbproblem.create(
+            favorite: false,
+            in_progress: false,
+            completed: false,
+            climber_feedback: "",
+            user_id: User.last.id,
+            problem_id: newcp,
+            route_rating: 0
+        )
         problem.to_json
     end
 
