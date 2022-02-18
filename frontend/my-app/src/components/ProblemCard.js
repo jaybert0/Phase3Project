@@ -21,23 +21,44 @@ import '../styles/ProblemCard.css'
   function ProblemCard({id, difficulty, location, technique, grip_color, end_date, problem_description, climbproblem}) {
     const [routeRating, setRouteRatingState] = useState(2.5)
     const label = { inputProps: { 'aria-label': 'Favorite/InProgress/Completed' } };
-    
+    const CPF = `http://localhost:9292/climbproblems/${id}`
+
     function setRouteRating(e){
       setRouteRatingState(e)
     }
 
+  //   const [submitter, setSubmitter] = useState({
+  //         in_progress: true,
+  //         favorite: false,
+  //         completed: false,
+  //         climber_feedback: "",
+  //         route_rating: 2.5
+  // })
+  // useEffect(() => {
+  //   postFeedback()
+  //   console.log(submitter)
+  // },[submitter])
+  
+  // function handleSetProblem(att, input) {
+  //   setSubmitter({...submitter, [att]: input});
+  // };
 
-    const [feedback, setFeedback] = useState("")
-    function submitFeedback(e){
-      setFeedback(e)
-      console.log(e)
-      postFeedback()
+
+  //   function postFeedback(){
+  //     const config = {
+  //       headers: {"Content-Type": "application/json"},
+  //       method: "PATCH",
+  //       body: JSON.stringify(submitter)
+  //     }
+  //     // fetch(CPF, config)
+  //     // .then(r => r.json())
+  //     // .then((data) => console.log(data))
+  //   };
+
+    const [climberFeedback, setClimberFeedbackState] = useState("")
+    function setClimberFeedback(e){
+      setClimberFeedbackState(e.target.value)
     }
-    function postFeedback(){
-      console.log(feedback)
-      // console.log(e.target.value)
-    };
-
     const [fav, setFavState] = useState(false)
     function setFavorite(){
       setFavState(!fav)
@@ -59,6 +80,12 @@ import '../styles/ProblemCard.css'
       if(climbproblem.problem_id === id){
         if(canRun === false){
           setFavState(climbproblem.favorite)
+          // handleSetProblem("favorite", climbproblem.favorite)
+          // handleSetProblem("climber_feedback", climbproblem.climber_feedback)
+          // handleSetProblem("in_progress", climbproblem.in_progress)
+          // handleSetProblem("completed", climbproblem.completed)
+          // handleSetProblem("route_rating", climbproblem.route_rating)
+          setClimberFeedbackState(climbproblem.climber_feedback)
           setInProgressState(climbproblem.in_progress)
           setCompletedState(climbproblem.completed)
           setRouteRatingState(climbproblem.route_rating)
@@ -75,6 +102,8 @@ import '../styles/ProblemCard.css'
         console.log("not the droid you are looking for")
       }
     })
+    
+    
 
     return (
       <Box class="box" sx={{ 
@@ -100,15 +129,26 @@ import '../styles/ProblemCard.css'
       <Box
       component="form"
       sx={{
-        '& > :not(style)': { m: 1, width: '35ch' },
+        '& > :not(style)': { m: 1, width: '75ch' },
         justifyContent: 'center',
         alignItems: "center"
       }}
       noValidate
       autoComplete="off"
     >
-      <TextField value={feedback} onChange={(e) => submitFeedback(e.target.value)}id="filled-basic" label="Please add comments about the route" variant="filled" />
-     
+      <TextField 
+      value={climberFeedback}
+      sx={{zIndex: 0}}
+      onChange={(e) => {
+        setClimberFeedback(e)
+        // handleSetProblem("climber_feedback", e.target.value)
+        // postFeedback()
+      }}
+      // value={feedback}  
+      // onChange={(e) => submitFeedback(e.target.value)}
+      id="filled-basic" 
+      label="Please add comments about the route" 
+      variant="filled" />
       {/* <Button onSubmit={submitFeedback} size="small" variant="contained" color="primary" type="submit">
         Submit
     </Button> */}
@@ -119,6 +159,7 @@ import '../styles/ProblemCard.css'
     <Grid container justifyContent="center">
       <ReactStars 
         count={5}
+        value={routeRating}
         onChange={(e) => setRouteRating(e)}
         size={24}
         color2={'#ffd700'} />
@@ -141,8 +182,6 @@ import '../styles/ProblemCard.css'
 
 
 export default ProblemCard
-
-
 
 
 

@@ -44,7 +44,7 @@ function MakerCard({difficulty, location, technique, grip_color, end_date, probl
             <DeleteIcon />
           </IconButton>
           <IconButton aria-label="edit">
-          <EditIcon onClick= {() => {
+          <EditIcon sx={{zIndex: 0}} onClick= {() => {
             if (problem.id === id) {
                 setFormProblem({
                     id: id,

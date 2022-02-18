@@ -49,7 +49,7 @@ function NavBar() {
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+        <Tabs value={value} onChange={handleChange} aria-label="NavBar" centered>
           <Tab label="Login" {...a11yProps(0)} component={Link} to="/"/>
         <Tab label="Climber" {...a11yProps(1)} component={Link} to="/climberlogin" />
         <Tab label="Route Setter" {...a11yProps(2)} component={Link} to="/boltmonkey"/>

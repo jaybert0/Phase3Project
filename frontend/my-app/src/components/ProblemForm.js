@@ -30,6 +30,8 @@ function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
         component="form"
         sx={{
           '& .MuiTextField-root': { m: 1, width: '25ch' },
+          position: 'sticky', top: 0,
+          bgcolor: 'white'
         }}
         noValidate
         autoComplete="off"
@@ -102,14 +104,7 @@ function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
         <FormHelperText>Required</FormHelperText>
       </FormControl>
 
-        <TextField
-          required
-          id="filled-required"
-          label="Route Description"
-          variant="filled"
-          onChange={(e) => handleSetProblem('problem_description',e.target.value)}
-          value={formProblem.problem_description}
-        />
+        
 
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <DatePicker
@@ -122,7 +117,16 @@ function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
           renderInput={(params) => <TextField {...params} helperText={"*Required mm/dd/yyyy"}/>}
         />
       </LocalizationProvider>
-
+      <div></div>
+      <TextField
+      fullWidth
+          required
+          id="filled-required"
+          label="Route Description"
+          variant="filled"
+          onChange={(e) => handleSetProblem('problem_description',e.target.value)}
+          value={formProblem.problem_description}
+        />
       </div>
       <div>
       <Button variant='contained' id='submit' onClick={() => {
