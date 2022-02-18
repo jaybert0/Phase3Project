@@ -31,7 +31,8 @@ function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
         sx={{
           '& .MuiTextField-root': { m: 1, width: '25ch' },
           position: 'sticky', top: 0,
-          bgcolor: 'white'
+          bgcolor: 'white',
+          zIndex: 500
         }}
         noValidate
         autoComplete="off"

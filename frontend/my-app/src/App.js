@@ -7,8 +7,9 @@ import MakerHome from './components/MakerHome';
 import LoginPage from './components/LoginPage';
 import NavBar from './components/NavBar'
 import SplashCard from './components/SplashCard'
+import About from './components/About'
 function App() {
-  const MAKER = "http://localhost:9292/makers"
+  const MAKER = "http://localhost:9292/problems-climb"
   const CLIMBPROBLEM ="http://localhost:9292/climbproblems"
   const PROBLEM ="http://localhost:9292/problems"
   const USER="http://localhost:9292/users"
@@ -110,7 +111,7 @@ function App() {
     fetch(MAKER)
     .then((r) => r.json())
     // .then((data) => console.log(data))
-    // .then((data) => setMaker(data))
+    .then((data) => setMaker(data))
   }
 
   function getUser(){
@@ -130,10 +131,10 @@ function App() {
             <ClimberHome getProblems={getProblems} setSearch={setSearch} problem={problem} climbproblem={climbproblem}/>
           </Route>
           <Route exact path="/boltmonkey">
-            <MakerHome problem={problem} climbproblem={climbproblem} getClimbproblems={getClimbproblems}/>
+            <MakerHome problem={maker} climbproblem={climbproblem} getClimbproblems={getClimbproblems}/>
           </Route>
           <Route exact path="/about">
-            <MakerHome />
+            <About />
           </Route>
           <Route exact path="">
             <LoginPage/>

@@ -9,7 +9,7 @@ import { styled } from '@mui/material/styles';
 import React from 'react';
 
 function MakerHome({problem, climbproblem}){
-
+console.log(problem)
     const Item = styled(Paper)(({ theme }) => ({
         ...theme.typography.body2,
         padding: theme.spacing(2),
@@ -49,6 +49,12 @@ function MakerHome({problem, climbproblem}){
                 grip_color={problem.grip_color}
                 end_date={problem.end_date}
                 problem_description={problem.problem_description}
+                // favorite={problem.climbproblems[0].favorite}
+                // in_progress={problem.climbproblems[0].in_progress}
+                // completed={problem.climbproblems[0].completed}
+                // rating={problem.climbproblems[0].route_rating}
+                climbproblem={climbproblem}
+
                 />
                 </Item>
                 </Grid>
