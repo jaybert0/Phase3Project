@@ -165,7 +165,7 @@ import '../styles/ProblemCard.css'
     }
     fetch(CPF, config)
     .then(r => r.json())
-    .then((data) => console.log(data))
+    // .then((data) => console.log(data))
     // console.log(submitter)
   };
 

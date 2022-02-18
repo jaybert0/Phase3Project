@@ -19,7 +19,7 @@ function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
     const initholds = problem.map((prob) => prob.technique);
     const holds = [...new Set(initholds)];
     // console.log(holds)
-    console.log(formProblem)
+    // console.log(formProblem)
     
 
     function handleSetProblem(att, input) {

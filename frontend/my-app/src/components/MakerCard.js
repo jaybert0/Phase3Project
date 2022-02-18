@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -17,12 +17,24 @@ import ProblemForm from './ProblemForm'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
   
-function MakerCard({difficulty, location, technique, grip_color, end_date, problem_description, id, problem, formProblem, setFormProblem, climbproblem}) {
+function MakerCard({difficulty, location, technique, grip_color, end_date, problem_description, id, problem, formProblem, setFormProblem, climbproblem, subproblem}) {
   const [favAdd, setFavAdd] = useState(0)
   const [inprogAdd, setinProgAdd] = useState(0)
   const [compAdd, setCompAdd] = useState(0)
   const [rating, setRating] = useState(0)
-
+  
+  const countfav = subproblem.filter(x => x.favorite ===true).length
+  const countinp = subproblem.filter(x => x.in_progress ===true).length
+  const countcomp = subproblem.filter(x => x.completed ===true).length
+  
+  console.log(subproblem[0].route_rating)
+  useEffect(() => {
+    setFavAdd(countfav)
+    setinProgAdd(countinp)
+    setCompAdd(countcomp)
+    setRating(subproblem[0].route_rating)
+  }, [])
+  
   // function addFavorites () {
   //   // console.log(favorite)
   //   let count = 0
@@ -31,18 +43,18 @@ function MakerCard({difficulty, location, technique, grip_color, end_date, probl
   //     setFavAdd(count)
   //   } else {console.log("Not favorite")}
   // }
-  let count = 0
-  climbproblem.map((cp) => {
-    if (cp.problem_id === id) {
+  // let count = 0
+  // climbproblem.map((cp) => {
+  //   if (cp.problem_id === id) {
       
-      if (cp.favorite === true) {
-        count += 1;
+  //     if (cp.favorite === true) {
+  //       count += 1;
 
-      } 
-    } 
-  })
+  //     } 
+  //   } 
+  // })
   
-  console.log(count)
+  // console.log(count)
     return (
       <Card sx={{ maxWidth: 345 }}>
         {/* <button onClick={() => addFavorites()}>Fav</button> */}
@@ -60,8 +72,9 @@ function MakerCard({difficulty, location, technique, grip_color, end_date, probl
             In-Progress: console.log({climbproblems.in_progress})<br />
             Completed: console.log({climbproblems.completed})<br /> */}
             Favorites: {favAdd}<br />
-            In-Progress: <br />
-            Completed: <br />
+            In-Progress: {inprogAdd}<br />
+            Completed: {compAdd}<br />
+            Rating: {rating}<br />
           </Typography>
         </CardContent>
         <CardActions disableSpacing>

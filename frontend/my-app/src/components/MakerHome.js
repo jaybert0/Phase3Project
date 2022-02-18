@@ -9,7 +9,7 @@ import { styled } from '@mui/material/styles';
 import React from 'react';
 
 function MakerHome({problem, climbproblem}){
-console.log(problem)
+// console.log(problem)
     const Item = styled(Paper)(({ theme }) => ({
         ...theme.typography.body2,
         padding: theme.spacing(2),
@@ -52,7 +52,7 @@ console.log(problem)
                 // favorite={problem.climbproblems[0].favorite}
                 // in_progress={problem.climbproblems[0].in_progress}
                 // completed={problem.climbproblems[0].completed}
-                // rating={problem.climbproblems[0].route_rating}
+                subproblem={problem.climbproblems}
                 climbproblem={climbproblem}
 
                 />
