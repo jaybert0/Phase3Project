@@ -38,9 +38,9 @@ function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
           fetch(CLIMBFORMPROBLEMSUBMITTER, config)
           .then(r => r.json())
           .then((data) => console.log(data))
-          // console.log(formProblem)
+          console.log(formProblem)
           console.log("submit button")
-          console.log("post setup")
+         
   
         }else{
           const config = {

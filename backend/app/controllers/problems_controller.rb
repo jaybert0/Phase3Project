@@ -36,6 +36,20 @@ class ProblemsController < ApplicationController
         )
     end
 
+    patch '/problems/:id' do
+        problem = Problem.find(params[:id])
+        problem.update(
+            difficulty: params[:difficulty],
+            grip_color: params[:grip_color],
+            technique: params[:technique],
+            location: params[:location],
+            end_date: params[:end_date],
+            problem_description: params[:problem_description],
+        )
+        problem.to_json
+        
+    end
+
     delete '/problems/:id' do
         problem = Problem.find(params[:id])
         problem.destroy
