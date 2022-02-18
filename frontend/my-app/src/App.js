@@ -8,7 +8,7 @@ import LoginPage from './components/LoginPage';
 import NavBar from './components/NavBar'
 import SplashCard from './components/SplashCard'
 function App() {
-  const MAKER = "http://localhost:9292/makers"
+  // const MAKER = "http://localhost:9292//problems-climb/:id"
   const CLIMBPROBLEM ="http://localhost:9292/climbproblems"
   const PROBLEM ="http://localhost:9292/problems"
   const USER="http://localhost:9292/users"
@@ -107,9 +107,9 @@ function App() {
   }
 
   function getMaker(){
-    fetch(MAKER)
+    fetch(`http://localhost:9292//problems-climb`)
     .then((r) => r.json())
-    // .then((data) => console.log(data))
+    .then((data) => console.log(data))
     // .then((data) => setMaker(data))
   }
 

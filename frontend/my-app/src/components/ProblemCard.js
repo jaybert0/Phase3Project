@@ -28,15 +28,9 @@ import '../styles/ProblemCard.css'
       handleSetProblem("route_rating", e)
     }
 
-
-
-  
   function handleSetProblem(att, input) {
     setSubmitter({...submitter, [att]: input});
   };
-
-
- 
 
     const [climberFeedback, setClimberFeedbackState] = useState("")
     function setClimberFeedback(e){
@@ -69,6 +63,8 @@ import '../styles/ProblemCard.css'
       route_rating: 2.5
   })
     const [canRun, setCanRun]= useState(false)
+    
+  function cpMapper(){
     climbproblem.map((climbproblem) => {
       if(climbproblem.problem_id === id){
         if(canRun === false){
@@ -101,61 +97,14 @@ import '../styles/ProblemCard.css'
         console.log("not the droid you are looking for")
       }
     })
-    
-
-
-  // function handleSubmissionChange(e){
-  //   setSubmitter((prevState) => {
-  //     if(e.target.name === "in progress"){
-  //       return({
-  //         in_progress: !e.target.value,
-  //         favorite: prevState.favorite,
-  //         completed: prevState.completed,
-  //         climber_feedback: prevState.climber_feedback,
-  //         route_rating: prevState.route_rating
-  //       })
-  //     }else if(e.target.name === "favorite"){
-  //       return({
-  //         in_progress: prevState.in_progress,
-  //         favorite: !e.target.value,
-  //         completed: prevState.completed,
-  //         climber_feedback: prevState.climber_feedback,
-  //         route_rating: prevState.route_rating
-  //       })
-  //     }else if(e.target.name === "completed"){
-  //       return({
-  //         in_progress: prevState.in_progress,
-  //         favorite: prevState.favorite,
-  //         completed: !e.target.value,
-  //         climber_feedback: prevState.climber_feedback,
-  //         route_rating: prevState.route_rating
-  //       })
-  //     }else if(e.target.name === "climber feedback"){
-  //       return({
-  //         in_progress: prevState.in_progress,
-  //         favorite: prevState.favorite,
-  //         completed: prevState.completed,
-  //         climber_feedback: e.target.value,
-  //         route_rating: prevState.route_rating
-  //       })
-  //     }else if(e.target.name === "route rating"){
-  //       return({
-  //         in_progress: prevState.in_progress,
-  //         favorite: prevState.favorite,
-  //         completed: prevState.completed,
-  //         climber_feedback: prevState.climber_feedback,
-  //         route_rating: e.target.value
-  //       })
-  //     }else{
-  //       return(
-  //         null
-  //       )
-  //     }
-  //   })
-  // }
+  }
   useEffect(() => {
     postFeedback()
   },[submitter, fav, inProg, complete, routeRating])
+  
+  useEffect(() => {
+    cpMapper()
+  },[cpMapper, submitter])
 
   function postFeedback(){
     const config = {
