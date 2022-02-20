@@ -152,7 +152,7 @@ function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
           renderInput={(params) => <TextField {...params} helperText={"mm/dd/yyyy"}/>}
         /> */}
         <DatePicker
-        disableFuture
+        disablePast
           label="End Date*"
           value={formProblem.end_date}
           format="dd-MM-yyyy"
