@@ -22,6 +22,7 @@ function App() {
   const [climbproblem, setClimbproblem] = useState([])
   const [maker, setMaker] = useState([])
   const [problem, setProblem] = useState([])
+  // problem sets for all cards
   const [user, setUser] = useState([])
   const [search, setSearch] = useState("problem")
 
@@ -59,7 +60,7 @@ function App() {
   function getEasyProblems(){
     fetch(EASYPROBLEM)
     .then((r) => r.json())
-    // .then((data) => console.log(data))
+    // r
     .then((data) => setProblem(data))
   }
 

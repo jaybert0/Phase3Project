@@ -9,6 +9,8 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import { render } from 'react-dom';
 
+// have to fetch for all problems and then filter. do not set up separate fetches on backend for difficulty. buttons filter to sort rather than fetch.
+
 function ClimberHome({setSearch, problem, getProblems, climbproblem, getClimbproblems}){
     // console.log(problem[0].difficulty)
     // console.log(problem[0])
